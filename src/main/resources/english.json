@@ -1,0 +1,10 @@
+{
+    "appName": "Path Manager",
+    "main": {
+        "read": "read",
+        "save": "save",
+        "add": "add",
+        "add-label": "Add new variable to user path",
+        "add-global-label": "Add new variable to global path"
+    }
+}
