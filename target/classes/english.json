@@ -1,9 +1,10 @@
 {
     "appName": "Path Manager",
     "main": {
-        "read": "read",
-        "save": "save",
-        "add": "add",
+        "readUsers": "Show users PATH",
+        "readSystem": "Show systems PATH",
+        "save": "Save",
+        "add": "Add new value to PATH",
         "add-label": "Add new variable to user path",
         "add-global-label": "Add new variable to global path"
     }

@@ -47,4 +47,13 @@ public final class Labels {
         String value = this.conf.getString(key);
         return value;
     }
+
+    public JSONObject getWindowLabels(String key){
+        JSONObject window = this.conf.getJSONObject(key);
+        return window;
+    }
+
+    public String getWindowValue(JSONObject window, String key){
+        return window.getString(key);
+    }
 }
