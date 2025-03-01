@@ -1,12 +1,13 @@
 {
     "appName": "Path Direktör",
     "main": {
-        "readUsers": "Visa användarens PATH",
-        "readSystem": "Visa systemets PATH",
+        "readUsers": "Nurvarande användarens PATH",
+        "readSystem": "Nurvarande systemets PATH",
         "save": "Spara",
         "add": "Skapa en ny var till PATH",
-        "add-label": "Skapa ny var till PATH",
-        "add-global-label": "Skapa ny var till systemts PATH"
+        "add-label": "Path värde",
+        "update": "Updatera värde",
+        "delete": "Ta bort från listan"
     }
 
 }
