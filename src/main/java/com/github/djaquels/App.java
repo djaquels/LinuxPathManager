@@ -7,6 +7,7 @@ import com.github.djaquels.utils.ReadPathInvoker;
 import com.github.djaquels.utils.UserPathCommand;
 import com.github.djaquels.utils.SavePathCommand;
 import com.github.djaquels.utils.UserSaveCommand;
+import com.github.djaquels.utils.StringUtils;
 //import com.github.djaquels.utils.savePathCommand;
 
 import java.util.Locale;
@@ -37,11 +38,14 @@ public class App extends Application {
     private ObservableList<String> userPathList = FXCollections.observableArrayList();
     private ObservableList<String> systemPathList = FXCollections.observableArrayList();
     private SavePathCommand saveUserPathCommand = new UserSaveCommand();
+    private String userPathAsString;
+    private String userPathMD5;
 
     private void updatePath(PathCommand command, ObservableList<String> pathList) {
         invoker.setCommand(command);
         pathList.setAll(invoker.fetchPath());
     }
+
     private String getLocalLanguage(){
         Locale currentLocale = Locale.getDefault();
         String language = currentLocale.getLanguage();
@@ -66,7 +70,8 @@ public class App extends Application {
         Label systemPathLabel = new Label(mainWindow.getString("readSystem"));
         updatePath(new UserPathCommand(), userPathList);
         updatePath(new GlobalPathCommand(), systemPathList);
-        
+        userPathAsString = String.join(":", userPathList);
+        userPathMD5 = StringUtils.getMD5(userPathAsString);
         /* 
         * Controll panel buttons
         Add new to PATH 
@@ -141,7 +146,11 @@ public class App extends Application {
     }
 
     private void savePathAction(){
-        saveUserPathCommand.execute(userPathList);
+        String onMemoryUserPath = String.join(":", userPathList);
+        String onMemoryUserMd5 = StringUtils.getMD5(onMemoryUserPath);
+        if(!onMemoryUserMd5.equals(userPathMD5)){
+            saveUserPathCommand.execute(userPathList);
+        }
     }
 
     public static void main(String[] args) {

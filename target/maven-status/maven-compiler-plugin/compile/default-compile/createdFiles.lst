@@ -4,5 +4,6 @@ com/github/djaquels/utils/UserPathCommand.class
 com/github/djaquels/utils/SavePathCommand.class
 com/github/djaquels/App.class
 com/github/djaquels/utils/ReadPathInvoker.class
+com/github/djaquels/utils/StringUtils.class
 com/github/djaquels/utils/PathCommand.class
 com/github/djaquels/ui/Labels.class

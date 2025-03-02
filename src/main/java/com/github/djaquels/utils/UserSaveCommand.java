@@ -20,8 +20,23 @@ public class UserSaveCommand implements SavePathCommand {
     
     try {
         List<String> lines = Files.readAllLines(bashrcPath, StandardCharsets.UTF_8);
-        lines.add("export PATH=$PATH:" + newPath);
-        Files.write(bashrcPath, lines, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+        int pathIndex = 0;
+        int currentIndex = 0;
+        for(String current : lines) {
+            if(current.contains("export PATH=")){
+                pathIndex = currentIndex;
+                break;
+            }
+            currentIndex++;
+        }
+        if(pathIndex == 0) {
+            System.out.println("Modifying existing path");
+            lines.add("export PATH="+ newPath);
+        }else{
+            System.out.println("Updating current path");
+            lines.set(pathIndex, "export PATH="+newPath);
+        }
+        Files.write(bashrcPath, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
     } catch (IOException e) {
         e.printStackTrace();
     }
