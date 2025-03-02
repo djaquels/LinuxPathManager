@@ -4,10 +4,19 @@
         "readUsers": "Nurvarande användarens PATH",
         "readSystem": "Nurvarande systemets PATH",
         "save": "Spara",
-        "add": "Skapa en ny var till PATH",
+        "add": "Skapa en ny var",
         "add-label": "Path värde",
         "update": "Updatera värde",
-        "delete": "Ta bort från listan"
+        "delete": "Ta bort från listan",
+        "to-env": "Öppna miljö vars"
+    },
+    "add": {
+        "header": "Lägg till PATH",
+        "label": "Välj var du vill lägga till sökvägen",
+        "action": "Vill du lägga till i användar-PATH eller system-PATH?",
+        "user-label": "Användar-PATH",
+        "system-label": "System-PATH",
+        "cancel-label": "Avbryt"
     }
 
 }

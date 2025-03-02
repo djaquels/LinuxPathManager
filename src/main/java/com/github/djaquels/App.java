@@ -5,6 +5,9 @@ import com.github.djaquels.utils.GlobalPathCommand;
 import com.github.djaquels.utils.PathCommand;
 import com.github.djaquels.utils.ReadPathInvoker;
 import com.github.djaquels.utils.UserPathCommand;
+import com.github.djaquels.utils.SavePathCommand;
+import com.github.djaquels.utils.UserSaveCommand;
+//import com.github.djaquels.utils.savePathCommand;
 
 import java.util.Locale;
 
@@ -17,7 +20,10 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -30,20 +36,24 @@ public class App extends Application {
     private ReadPathInvoker invoker = new ReadPathInvoker();
     private ObservableList<String> userPathList = FXCollections.observableArrayList();
     private ObservableList<String> systemPathList = FXCollections.observableArrayList();
-     private void updatePath(PathCommand command, ObservableList<String> pathList) {
+    private SavePathCommand saveUserPathCommand = new UserSaveCommand();
+
+    private void updatePath(PathCommand command, ObservableList<String> pathList) {
         invoker.setCommand(command);
         pathList.setAll(invoker.fetchPath());
     }
-
-    @Override
-    public void start(Stage primaryStage) {
+    private String getLocalLanguage(){
         Locale currentLocale = Locale.getDefault();
         String language = currentLocale.getLanguage();
         HashMap languagesMap = new HashMap<String, String>();
         languagesMap.put("en", "english");
         languagesMap.put("sv", "swedish");
         String appLanguage = (languagesMap.containsKey(language)) ? languagesMap.get(language).toString() : "english";
-        
+        return  appLanguage;
+    } 
+    @Override
+    public void start(Stage primaryStage) {
+        String appLanguage = getLocalLanguage();
         Labels conf = Labels.getInstance(appLanguage);
         String header = conf.getValue("appName");
         JSONObject mainWindow = conf.getWindowLabels("main");
@@ -68,38 +78,70 @@ public class App extends Application {
         pathField.setPromptText(mainWindow.getString("add-label"));
 
         Button addButton = new Button(mainWindow.getString("add"));
-        addButton.setOnAction(e -> updatePathAction(pathField.getText()));
+        addButton.setOnAction(e -> addPathAction(pathField.getText()));
 
         // Update
         Button updateButton = new Button(mainWindow.getString("update"));
 
         // Save
         Button saveButton = new Button(mainWindow.getString("save"));
+        saveButton.setOnAction(e -> savePathAction());
 
         // Delete
 
         Button deleButton = new Button(mainWindow.getString("delete"));
         
+        // Env Vars Window
+        Button toEnvVars = new Button(mainWindow.getString("to-env"));
+        
         //Buttons layout
         HBox buttonBox = new HBox(10); // 10 är mellanrummet mellan knapparna
-        buttonBox.getChildren().addAll(addButton, updateButton, saveButton, deleButton);
+        buttonBox.getChildren().addAll(addButton, updateButton, saveButton, deleButton, toEnvVars);
 
         VBox layout = new VBox(10);
         layout.getChildren().addAll(userPathLabel,userListView,systemPathLabel, systemListView,pathField, buttonBox);
 
 
-        Scene scene = new Scene(layout, 600, 350);
+        Scene scene = new Scene(layout, 750, 350);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    private void updatePathAction(String newPath) {
+    private void addPathAction(String newPath) {
         // Implementera logik för att uppdatera PATH här
-        System.out.println("Uppdaterar PATH till: " + newPath);
+    String appLanguage = getLocalLanguage();
+    Labels conf = Labels.getInstance(appLanguage);
+    JSONObject addWindow = conf.getWindowLabels("add");
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle(addWindow.getString("header"));
+    alert.setHeaderText(addWindow.getString("label"));
+    alert.setContentText(addWindow.getString("action"));
+
+    ButtonType userButton = new ButtonType(addWindow.getString("user-label"));
+    ButtonType systemButton = new ButtonType(addWindow.getString("system-label"));
+    ButtonType cancelButton = new ButtonType(addWindow.getString("cancel-label"), ButtonBar.ButtonData.CANCEL_CLOSE);
+
+    alert.getButtonTypes().setAll(userButton, systemButton, cancelButton);
+
+    alert.showAndWait().ifPresent(result -> {
+        if (result == userButton) {
+            addPathToList(userPathList, newPath);
+        } else if (result == systemButton) {
+            addPathToList(systemPathList, newPath);
+        }
+    });
+
+    }
+
+    private void addPathToList(ObservableList<String> list, String value) {
+        String newPath = value.trim();
+        if (!newPath.isEmpty() && !list.contains(newPath)) {
+            list.add(newPath);
+        }
     }
 
     private void savePathAction(){
-        // Implementera logik för att spara PATTH inställningar här
+        saveUserPathCommand.execute(userPathList);
     }
 
     public static void main(String[] args) {

@@ -4,9 +4,18 @@
         "readUsers": "Current users PATH",
         "readSystem": "Current systems PATH",
         "save": "Save",
-        "add": "Add new value to PATH",
+        "add": "Add new value",
         "add-label": "Path value",
         "update": "Edit value",
-        "delete": "Delete item"
+        "delete": "Delete item",
+        "to-env": "Open environment vars"
+    },
+    "add": {
+        "header": "Add to PATH",
+        "label": "Select where do you want to store the new path value",
+        "action": "Do you want to store at user or system level?",
+        "user-label": "User PATH",
+        "system-label": "System PATH",
+        "cancel-label": "Cancel"
     }
 }
