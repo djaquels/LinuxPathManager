@@ -12,7 +12,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 
 public class UserSaveCommand implements SavePathCommand {
-
+    private BuildPathString pathClient = BuildPathString.getBuildPathClient();
     @Override
     public void updateBashrc(String newPath) {
     String homeDir = System.getProperty("user.home");
@@ -22,19 +22,22 @@ public class UserSaveCommand implements SavePathCommand {
         List<String> lines = Files.readAllLines(bashrcPath, StandardCharsets.UTF_8);
         int pathIndex = 0;
         int currentIndex = 0;
+        String currentPathString = "";
         for(String current : lines) {
             if(current.contains("export PATH=")){
                 pathIndex = currentIndex;
+                currentPathString = current;
                 break;
             }
             currentIndex++;
         }
-        if(pathIndex == 0) {
+        if(currentPathString.equals("")) {
             System.out.println("Modifying existing path");
             lines.add("export PATH="+ newPath);
         }else{
-            System.out.println("Updating current path");
-            lines.set(pathIndex, "export PATH="+newPath);
+            String newPathString = pathClient.buildPathString(currentPathString, newPath);
+            System.out.println("Updating current path with " + newPathString);
+            lines.set(pathIndex, newPathString);
         }
         Files.write(bashrcPath, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
     } catch (IOException e) {

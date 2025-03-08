@@ -11,6 +11,7 @@ import com.github.djaquels.utils.StringUtils;
 //import com.github.djaquels.utils.savePathCommand;
 
 import java.util.Locale;
+import java.util.Optional;
 
 import org.json.JSONObject;
 
@@ -40,6 +41,7 @@ public class App extends Application {
     private SavePathCommand saveUserPathCommand = new UserSaveCommand();
     private String userPathAsString;
     private String userPathMD5;
+    private Boolean isUserViewActive;
 
     private void updatePath(PathCommand command, ObservableList<String> pathList) {
         invoker.setCommand(command);
@@ -78,6 +80,20 @@ public class App extends Application {
         Update/Edit select item in view
         Save settings
         */
+        // View actions
+        userListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                handleSelection(true);
+            }
+        });
+        
+        systemListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                handleSelection(false);
+            }
+        });
+        
+
         // Add
         TextField pathField = new TextField();
         pathField.setPromptText(mainWindow.getString("add-label"));
@@ -95,6 +111,8 @@ public class App extends Application {
         // Delete
 
         Button deleButton = new Button(mainWindow.getString("delete"));
+        deleButton.setOnAction(e -> deleteButtonAction(userListView, systemListView));
+
         
         // Env Vars Window
         Button toEnvVars = new Button(mainWindow.getString("to-env"));
@@ -146,12 +164,55 @@ public class App extends Application {
     }
 
     private void savePathAction(){
+        if(this.isUserViewActive == null){
+            return;
+        }
         String onMemoryUserPath = String.join(":", userPathList);
         String onMemoryUserMd5 = StringUtils.getMD5(onMemoryUserPath);
         if(!onMemoryUserMd5.equals(userPathMD5)){
             saveUserPathCommand.execute(userPathList);
+            userPathMD5 = onMemoryUserMd5;
         }
     }
+
+    private void deleteButtonAction(ListView<String> user, ListView<String> system) {
+    ListView<String> activeListView = getCurrentActiveListView(user, system);
+    ObservableList<String> activeList = activeListView.getItems();
+    int selectedIndex = activeListView.getSelectionModel().getSelectedIndex();
+
+    if (selectedIndex != -1) {
+        String itemToRemove = activeList.get(selectedIndex);
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Bekräfta borttagning");
+        alert.setHeaderText("Ta bort vald sökväg");
+        alert.setContentText("Är du säker på att du vill ta bort: " + itemToRemove);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            activeList.remove(selectedIndex);
+        }
+    } else {
+        showErrorDialog("Ingen sökväg vald", "Vänligen välj en sökväg att ta bort.");
+    }
+}
+
+private ListView<String> getCurrentActiveListView(ListView<String> user, ListView<String> system) {
+    // Anta att vi har en metod eller variabel som håller reda på vilken lista som är aktiv
+    return this.isUserViewActive ?  user: system;
+}
+
+private void showErrorDialog(String title, String content) {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(content);
+    alert.showAndWait();
+}
+
+private void handleSelection(Boolean value){
+    this.isUserViewActive = value;
+}
 
     public static void main(String[] args) {
         launch(args);

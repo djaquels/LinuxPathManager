@@ -1,5 +1,6 @@
 /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/App.java
 /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/ui/Labels.java
+/home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/utils/BuildPathString.java
 /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/utils/GlobalPathCommand.java
 /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/utils/PathCommand.java
 /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/utils/ReadPathInvoker.java
