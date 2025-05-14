@@ -17,6 +17,13 @@
         "user-label": "Användar-PATH",
         "system-label": "System-PATH",
         "cancel-label": "Avbryt"
+    },
+    "delete": {
+        "header": "Ta bort",
+        "title": "Bekräfta borttagnin",
+        "confirm-label": "Är du säker på att du vill ta bort: ",
+        "error-header": "Ingen sökväg väld",
+        "error-label": "Vänligen välj ett sökväg för att ta bort."
     }
 
 }

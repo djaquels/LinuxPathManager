@@ -56,11 +56,17 @@ public class App extends Application {
         languagesMap.put("sv", "swedish");
         String appLanguage = (languagesMap.containsKey(language)) ? languagesMap.get(language).toString() : "english";
         return  appLanguage;
-    } 
-    @Override
-    public void start(Stage primaryStage) {
+    }
+
+    private Labels getWindowConfs(){
         String appLanguage = getLocalLanguage();
         Labels conf = Labels.getInstance(appLanguage);
+        return conf;
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        Labels conf = getWindowConfs();
         String header = conf.getValue("appName");
         JSONObject mainWindow = conf.getWindowLabels("main");
         primaryStage.setTitle(header);
@@ -132,8 +138,7 @@ public class App extends Application {
 
     private void addPathAction(String newPath) {
         // Implementera logik för att uppdatera PATH här
-    String appLanguage = getLocalLanguage();
-    Labels conf = Labels.getInstance(appLanguage);
+    Labels conf = getWindowConfs();
     JSONObject addWindow = conf.getWindowLabels("add");
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.setTitle(addWindow.getString("header"));
@@ -179,21 +184,22 @@ public class App extends Application {
     ListView<String> activeListView = getCurrentActiveListView(user, system);
     ObservableList<String> activeList = activeListView.getItems();
     int selectedIndex = activeListView.getSelectionModel().getSelectedIndex();
-
+    Labels conf = getWindowConfs();
+    JSONObject deleteWindow = conf.getWindowLabels("delete");
     if (selectedIndex != -1) {
         String itemToRemove = activeList.get(selectedIndex);
         
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Bekräfta borttagning");
-        alert.setHeaderText("Ta bort vald sökväg");
-        alert.setContentText("Är du säker på att du vill ta bort: " + itemToRemove);
+        alert.setTitle(deleteWindow.getString("title"));
+        alert.setHeaderText(deleteWindow.getString("header"));
+        alert.setContentText(deleteWindow.getString("confirm-label")+ itemToRemove);
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             activeList.remove(selectedIndex);
         }
     } else {
-        showErrorDialog("Ingen sökväg vald", "Vänligen välj en sökväg att ta bort.");
+        showErrorDialog(deleteWindow.getString("error-header"), deleteWindow.getString("error-label"));
     }
 }
 

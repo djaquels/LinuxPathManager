@@ -17,5 +17,12 @@
         "user-label": "User PATH",
         "system-label": "System PATH",
         "cancel-label": "Cancel"
+    },
+    "delete": {
+        "header": "Delete",
+        "title": "Confirm",
+        "confirm-label": "Are you sure you want to remove: ",
+        "error-header": "No item selected",
+        "error-label": "Please select one item"
     }
 }
