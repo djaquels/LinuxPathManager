@@ -48,17 +48,17 @@ public class App extends Application {
         pathList.setAll(invoker.fetchPath());
     }
 
-    private String getLocalLanguage(){
+    private String getLocalLanguage() {
         Locale currentLocale = Locale.getDefault();
         String language = currentLocale.getLanguage();
         HashMap languagesMap = new HashMap<String, String>();
         languagesMap.put("en", "english");
         languagesMap.put("sv", "swedish");
         String appLanguage = (languagesMap.containsKey(language)) ? languagesMap.get(language).toString() : "english";
-        return  appLanguage;
+        return appLanguage;
     }
 
-    private Labels getWindowConfs(){
+    private Labels getWindowConfs() {
         String appLanguage = getLocalLanguage();
         Labels conf = Labels.getInstance(appLanguage);
         return conf;
@@ -80,25 +80,24 @@ public class App extends Application {
         updatePath(new GlobalPathCommand(), systemPathList);
         userPathAsString = String.join(":", userPathList);
         userPathMD5 = StringUtils.getMD5(userPathAsString);
-        /* 
-        * Controll panel buttons
-        Add new to PATH 
-        Update/Edit select item in view
-        Save settings
-        */
+        /*
+         * Controll panel buttons
+         * Add new to PATH
+         * Update/Edit select item in view
+         * Save settings
+         */
         // View actions
         userListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 handleSelection(true);
             }
         });
-        
+
         systemListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 handleSelection(false);
             }
         });
-        
 
         // Add
         TextField pathField = new TextField();
@@ -109,6 +108,7 @@ public class App extends Application {
 
         // Update
         Button updateButton = new Button(mainWindow.getString("update"));
+        updateButton.setOnAction(e -> updateButtonAction(userListView, systemListView, pathField.getText()));
 
         // Save
         Button saveButton = new Button(mainWindow.getString("save"));
@@ -117,19 +117,17 @@ public class App extends Application {
         // Delete
 
         Button deleButton = new Button(mainWindow.getString("delete"));
-        deleButton.setOnAction(e -> deleteButtonAction(userListView, systemListView));
+        deleButton.setOnAction(e -> deleteButtonAction(userListView, systemListView, false));
 
-        
         // Env Vars Window
         Button toEnvVars = new Button(mainWindow.getString("to-env"));
-        
-        //Buttons layout
+
+        // Buttons layout
         HBox buttonBox = new HBox(10); // 10 är mellanrummet mellan knapparna
         buttonBox.getChildren().addAll(addButton, updateButton, saveButton, deleButton, toEnvVars);
 
         VBox layout = new VBox(10);
-        layout.getChildren().addAll(userPathLabel,userListView,systemPathLabel, systemListView,pathField, buttonBox);
-
+        layout.getChildren().addAll(userPathLabel, userListView, systemPathLabel, systemListView, pathField, buttonBox);
 
         Scene scene = new Scene(layout, 750, 350);
         primaryStage.setScene(scene);
@@ -138,26 +136,27 @@ public class App extends Application {
 
     private void addPathAction(String newPath) {
         // Implementera logik för att uppdatera PATH här
-    Labels conf = getWindowConfs();
-    JSONObject addWindow = conf.getWindowLabels("add");
-    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    alert.setTitle(addWindow.getString("header"));
-    alert.setHeaderText(addWindow.getString("label"));
-    alert.setContentText(addWindow.getString("action"));
+        Labels conf = getWindowConfs();
+        JSONObject addWindow = conf.getWindowLabels("add");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(addWindow.getString("header"));
+        alert.setHeaderText(addWindow.getString("label"));
+        alert.setContentText(addWindow.getString("action"));
 
-    ButtonType userButton = new ButtonType(addWindow.getString("user-label"));
-    ButtonType systemButton = new ButtonType(addWindow.getString("system-label"));
-    ButtonType cancelButton = new ButtonType(addWindow.getString("cancel-label"), ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType userButton = new ButtonType(addWindow.getString("user-label"));
+        ButtonType systemButton = new ButtonType(addWindow.getString("system-label"));
+        ButtonType cancelButton = new ButtonType(addWindow.getString("cancel-label"),
+                ButtonBar.ButtonData.CANCEL_CLOSE);
 
-    alert.getButtonTypes().setAll(userButton, systemButton, cancelButton);
+        alert.getButtonTypes().setAll(userButton, systemButton, cancelButton);
 
-    alert.showAndWait().ifPresent(result -> {
-        if (result == userButton) {
-            addPathToList(userPathList, newPath);
-        } else if (result == systemButton) {
-            addPathToList(systemPathList, newPath);
-        }
-    });
+        alert.showAndWait().ifPresent(result -> {
+            if (result == userButton) {
+                addPathToList(userPathList, newPath);
+            } else if (result == systemButton) {
+                addPathToList(systemPathList, newPath);
+            }
+        });
 
     }
 
@@ -168,60 +167,79 @@ public class App extends Application {
         }
     }
 
-    private void savePathAction(){
-        if(this.isUserViewActive == null){
+    private void savePathAction() {
+        if (this.isUserViewActive == null) {
             return;
         }
         String onMemoryUserPath = String.join(":", userPathList);
         String onMemoryUserMd5 = StringUtils.getMD5(onMemoryUserPath);
-        if(!onMemoryUserMd5.equals(userPathMD5)){
+        if (!onMemoryUserMd5.equals(userPathMD5)) {
             saveUserPathCommand.execute(userPathList);
             userPathMD5 = onMemoryUserMd5;
         }
     }
 
-    private void deleteButtonAction(ListView<String> user, ListView<String> system) {
-    ListView<String> activeListView = getCurrentActiveListView(user, system);
-    ObservableList<String> activeList = activeListView.getItems();
-    int selectedIndex = activeListView.getSelectionModel().getSelectedIndex();
-    Labels conf = getWindowConfs();
-    JSONObject deleteWindow = conf.getWindowLabels("delete");
-    if (selectedIndex != -1) {
-        String itemToRemove = activeList.get(selectedIndex);
-        
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(deleteWindow.getString("title"));
-        alert.setHeaderText(deleteWindow.getString("header"));
-        alert.setContentText(deleteWindow.getString("confirm-label")+ itemToRemove);
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            activeList.remove(selectedIndex);
+    private void deleteButtonAction(ListView<String> user, ListView<String> system, Boolean autoConfirmed) {
+        ListView<String> activeListView = getCurrentActiveListView(user, system);
+        ObservableList<String> activeList = activeListView.getItems();
+        int selectedIndex = activeListView.getSelectionModel().getSelectedIndex();
+        Labels conf = getWindowConfs();
+        JSONObject deleteWindow = conf.getWindowLabels("delete");
+        if (selectedIndex != -1) {
+            String itemToRemove = activeList.get(selectedIndex);
+            if (autoConfirmed || userConfirmed(deleteWindow, itemToRemove)) {
+                activeList.remove(selectedIndex);
+            }
+        } else {
+            showErrorDialog(deleteWindow.getString("error-header"), deleteWindow.getString("error-label"));
         }
-    } else {
-        showErrorDialog(deleteWindow.getString("error-header"), deleteWindow.getString("error-label"));
     }
-}
 
-private ListView<String> getCurrentActiveListView(ListView<String> user, ListView<String> system) {
-    // Anta att vi har en metod eller variabel som håller reda på vilken lista som är aktiv
-    return this.isUserViewActive ?  user: system;
-}
+    private void updateButtonAction(ListView<String> user, ListView<String> system, String newValue) {
+        ListView<String> activeListView = getCurrentActiveListView(user, system);
+        ObservableList<String> activeList = activeListView.getItems();
+        int selectedIndex = activeListView.getSelectionModel().getSelectedIndex();
+        Labels conf = getWindowConfs();
+        JSONObject updateWindow = conf.getWindowLabels("update");
+        if (selectedIndex != -1) {
+            String itemToUpdate = activeList.get(selectedIndex);
+            if (userConfirmed(updateWindow, itemToUpdate)) {
+                deleteButtonAction(user, system, true);
+                addPathAction(newValue);
+            }
+        } else {
+            showErrorDialog(updateWindow.getString("error-header"), updateWindow.getString("error-label"));
+        }
+    }
 
-private void showErrorDialog(String title, String content) {
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle(title);
-    alert.setHeaderText(null);
-    alert.setContentText(content);
-    alert.showAndWait();
-}
+    private ListView<String> getCurrentActiveListView(ListView<String> user, ListView<String> system) {
+        // Anta att vi har en metod eller variabel som håller reda på vilken lista som
+        // är aktiv
+        return this.isUserViewActive ? user : system;
+    }
 
-private void handleSelection(Boolean value){
-    this.isUserViewActive = value;
-}
+    private void showErrorDialog(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private Boolean userConfirmed(JSONObject window, String itemValue){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(window.getString("title"));
+        alert.setHeaderText(window.getString("header"));
+        alert.setContentText(window.getString("confirm-label") + itemValue);
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == ButtonType.OK;
+    }
+
+    private void handleSelection(Boolean value) {
+        this.isUserViewActive = value;
+    }
 
     public static void main(String[] args) {
         launch(args);
     }
 }
-

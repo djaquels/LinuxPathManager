@@ -24,6 +24,12 @@
         "confirm-label": "Är du säker på att du vill ta bort: ",
         "error-header": "Ingen sökväg väld",
         "error-label": "Vänligen välj ett sökväg för att ta bort."
+    },
+    "update": {
+        "header": "Uppdatera value",
+        "title": "Bekräfta uppdatering",
+        "error-header": "Ingen sökväg väld",
+        "error-label": "Vänligen välj ett sökväg för att uppdatera.",
+        "confirm-label": "Är du säker på att du vill uppdatera: "
     }
-
 }
