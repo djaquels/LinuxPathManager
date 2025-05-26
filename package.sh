@@ -12,7 +12,7 @@ cp control linuxpathmanager/DEBIAN
 cp exec linuxpathmanager/usr/bin/linuxpathmanager
 chmod +x linuxpathmanager/usr/bin/linuxpathmanager
 # kopiera .jar och iconer
-cp target/linux-path-gui-1.0-SNAPSHOT.jar linuxpathmanager/usr/share/linuxpathmanager/
+cp target/linux-path-gui-1.0-SNAPSHOT-shaded.jar linuxpathmanager/usr/share/linuxpathmanager/
 cp icon.png linuxpathmanager/usr/share/linuxpathmanager/  # Om du har en ikon
 # desktop fil
 cp linuxpathmanager.desktop linuxpathmanager/usr/share/applications/linuxpathmanager.desktop:

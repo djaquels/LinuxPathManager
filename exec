@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar /usr/share/linuxpathmanager/linux-path-gui-1.0-SNAPSHOT.jar
+java -jar /usr/share/linuxpathmanager/linux-path-gui-1.0-SNAPSHOT-shaded.jar
