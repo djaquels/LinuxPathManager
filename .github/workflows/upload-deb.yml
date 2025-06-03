@@ -1,0 +1,41 @@
+name: Bygg och publicera Debian-paket
+
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Klona repo
+        uses: actions/checkout@v4
+      
+      - name: Installera beroenden
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      
+      - name: Installera Maven
+        run: sudo apt-get update && sudo apt-get install -y maven
+
+      - name: Bygg .deb-fil 
+        run: bash ./package.sh
+
+
+      - name: Skapa Release och ladda upp .deb
+        uses: softprops/action-gh-release@v2
+        with:
+          files: *.deb
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
