@@ -1,7 +1,8 @@
 package com.github.djaquels.utils;
 import javafx.collections.ObservableList;
+import java.io.IOException;
 
 public interface SavePathCommand {
     void execute(ObservableList<String> valuesList);
-    void updateBashrc(String newPath);
+    void update(String newPath) throws IOException, InterruptedException;
 }

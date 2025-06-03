@@ -31,5 +31,14 @@
         "error-header": "Ingen sökväg väld",
         "error-label": "Vänligen välj ett sökväg för att uppdatera.",
         "confirm-label": "Är du säker på att du vill uppdatera: "
+    },
+    "save": {
+	"header": "Spara PATH",
+	"title": "Bekräfta sparning",
+	"error-header": "Ingen sökväg väld",
+	"error-label": "Vänligen välj en sökväg för att spara.",
+	"confirm-label": "Är du säker på att du vill spara: ",
+	"sudo-label": "Skappa sudo lösenord för att spara system-PATH:",
+	"password-label": "Lösenord"
     }
 }

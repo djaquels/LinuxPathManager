@@ -6,6 +6,7 @@ com/github/djaquels/ui/Labels.class
 com/github/djaquels/Main.class
 com/github/djaquels/utils/GlobalPathCommand.class
 com/github/djaquels/utils/UserPathCommand.class
+com/github/djaquels/utils/SystemSaveCommand.class
 com/github/djaquels/utils/SavePathCommand.class
 com/github/djaquels/utils/ReadPathInvoker.class
 com/github/djaquels/utils/BuildPathString.class

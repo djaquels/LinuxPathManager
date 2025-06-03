@@ -13,7 +13,7 @@ import javafx.collections.ObservableList;
 public class UserSaveCommand implements SavePathCommand {
     private BuildPathString pathClient = BuildPathString.getBuildPathClient();
     @Override
-    public void updateBashrc(String newPath) {
+    public void update(String newPath) throws IOException, InterruptedException {
     String homeDir = System.getProperty("user.home");
     Path bashrcPath = Paths.get(homeDir, ".bashrc");
     
@@ -41,15 +41,20 @@ public class UserSaveCommand implements SavePathCommand {
         Files.write(bashrcPath, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
     } catch (IOException e) {
         e.printStackTrace();
+	throw new IOException("Error writing to .bashrc file", e);
     }
 }
 
     @Override
     public void execute(ObservableList<String> valuesList) {
         String newPath = String.join(":", valuesList);
-        updateBashrc(newPath);
+        try {
+	update(newPath);
         String currentPath = System.getenv("PATH");
         String updatedPath = currentPath + ":" + newPath;
         System.setProperty("java.library.path", updatedPath);
+	} catch (IOException | InterruptedException e) {
+	    e.printStackTrace();
+	}
     }
 }

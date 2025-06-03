@@ -24,5 +24,14 @@
         "confirm-label": "Are you sure you want to remove: ",
         "error-header": "No item selected",
         "error-label": "Please select one item"
+    },
+    "save": {
+	"header": "Save",
+	"title": "Confirm",
+	"confirm-label": "Are you sure you want to save the changes?",
+	"error-header": "No item selected",
+	"error-label": "Please select one item",
+	"sudo-label": "You need to run this app as administrator to save changes to system PATH",
+	"password-label": "password"
     }
 }

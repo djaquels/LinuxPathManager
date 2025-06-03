@@ -8,6 +8,7 @@ import com.github.djaquels.utils.UserPathCommand;
 import com.github.djaquels.utils.SavePathCommand;
 import com.github.djaquels.utils.UserSaveCommand;
 import com.github.djaquels.utils.StringUtils;
+import com.github.djaquels.utils.SystemSaveCommand;
 //import com.github.djaquels.utils.savePathCommand;
 
 import java.util.Locale;
@@ -32,6 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.scene.control.PasswordField;
 import java.util.HashMap;
 
 public class App extends Application {
@@ -41,6 +43,7 @@ public class App extends Application {
     private SavePathCommand saveUserPathCommand = new UserSaveCommand();
     private String userPathAsString;
     private String userPathMD5;
+    private String systemPathMD5;
     private Boolean isUserViewActive;
 
     private void updatePath(PathCommand command, ObservableList<String> pathList) {
@@ -80,6 +83,7 @@ public class App extends Application {
         updatePath(new GlobalPathCommand(), systemPathList);
         userPathAsString = String.join(":", userPathList);
         userPathMD5 = StringUtils.getMD5(userPathAsString);
+	systemPathMD5 = StringUtils.getMD5(String.join(":", systemPathList));
         /*
          * Controll panel buttons
          * Add new to PATH
@@ -173,10 +177,25 @@ public class App extends Application {
         }
         String onMemoryUserPath = String.join(":", userPathList);
         String onMemoryUserMd5 = StringUtils.getMD5(onMemoryUserPath);
-        if (!onMemoryUserMd5.equals(userPathMD5)) {
+	String onMemorySystemPath = String.join(":", systemPathList);
+	String onMemorySystemMd5 = StringUtils.getMD5(onMemorySystemPath);
+        if (this.isUserViewActive && !onMemoryUserMd5.equals(userPathMD5)) {
             saveUserPathCommand.execute(userPathList);
             userPathMD5 = onMemoryUserMd5;
-        }
+        }else{
+	   if(onMemorySystemMd5.equals(systemPathMD5)){
+	    return;
+	   }
+           String sudoPassword = promptForSudoPassword();
+	   if (sudoPassword != null && !sudoPassword.isEmpty()) {
+	       SavePathCommand saveSystemPathCommand = new SystemSaveCommand(sudoPassword);
+	       saveSystemPathCommand.execute(systemPathList);
+	       systemPathMD5 = onMemorySystemMd5;
+	   } else {
+	       showErrorDialog("Error", "Sudo password is required to save system paths.");
+	   }
+	}
+
     }
 
     private void deleteButtonAction(ListView<String> user, ListView<String> system, Boolean autoConfirmed) {
@@ -211,7 +230,28 @@ public class App extends Application {
             showErrorDialog(updateWindow.getString("error-header"), updateWindow.getString("error-label"));
         }
     }
+    
+    private String promptForSudoPassword(){
+        Labels conf = getWindowConfs();
+	JSONObject saveWindow = conf.getWindowLabels("save");
+	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+	alert.setTitle(saveWindow.getString("title"));
+	alert.setHeaderText(saveWindow.getString("header"));
+	alert.setContentText(saveWindow.getString("sudo-label"));
 
+	PasswordField passwordField = new PasswordField();
+	passwordField.setPromptText(saveWindow.getString("password-label"));
+	VBox dialogPaneContent = new VBox(10);
+	dialogPaneContent.getChildren().add(passwordField);
+	alert.getDialogPane().setContent(dialogPaneContent);
+
+	Optional<ButtonType> result = alert.showAndWait();
+	if (result.isPresent() && result.get() == ButtonType.OK) {
+	    return passwordField.getText();
+	}
+	return null; // Return null if the user cancels or doesn't provide a password
+
+    }
     private ListView<String> getCurrentActiveListView(ListView<String> user, ListView<String> system) {
         // Anta att vi har en metod eller variabel som håller reda på vilken lista som
         // är aktiv
@@ -234,7 +274,7 @@ public class App extends Application {
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
-
+    
     private void handleSelection(Boolean value) {
         this.isUserViewActive = value;
     }

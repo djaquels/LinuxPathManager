@@ -7,5 +7,6 @@
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/ReadPathInvoker.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/SavePathCommand.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/StringUtils.java
+/home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/SystemSaveCommand.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/UserPathCommand.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/UserSaveCommand.java
