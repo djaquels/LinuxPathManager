@@ -30,7 +30,7 @@ jobs:
       - name: Skapa Release och ladda upp .deb
         uses: softprops/action-gh-release@v2
         with:
-          files: *.deb
+          files: ./linuxpathmanager.deb
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           draft: false
