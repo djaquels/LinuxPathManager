@@ -1,7 +1,6 @@
 # Linux Path Manager
-A simple linux widget to manage your paths. Inspired by the Windows Path Manager
-this functionality is not available in Linux by default. This project aims to fulfill this user experience.
-
+**LinuxPathManager<linuxpathmanager>**JavaFX-based Linux desktop application to easy manage and edit system environment variables like PATH, JAVA_HOME, etc.
+using a simple GUI. Ideal for developers, sysadmins, or Linux users who prefer a visual alternative,
 
 ## Local Development
 ### Install dependencies
@@ -22,3 +21,16 @@ sudo apt install ./linuxpathmanager.deb
 
 ## From ppa
 pending
+
+## Features
+
+- View and edit system environment variables (user and system level)
+- Add, remove, and modify PATH entries
+- Automatic detection of existing environment variables
+- '.deb' package for easy installation (other Linux packkage managers pending)
+- Remote (ssh) management of environment variables, for GUI server management (pending)
+
+## Feedback and contributions
+
+Feel free to open issues or pull requests, bug reports and enhancement requests are welcome.
+
