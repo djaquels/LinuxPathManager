@@ -1,5 +1,5 @@
 # Linux Path Manager
-**LinuxPathManager<linuxpathmanager>**JavaFX-based Linux desktop application to easy manage and edit system environment variables like PATH, JAVA_HOME, etc.
+**LinuxPathManager** JavaFX-based Linux desktop application to easy manage and edit system environment variables like PATH, JAVA_HOME, etc.
 using a simple GUI. Ideal for developers, sysadmins, or Linux users who prefer a visual alternative,
 
 ## Local Development
