@@ -33,7 +33,7 @@ public  final   class BuildPathString {
 	String result = shellTuples.get(shell)[0];
         List<String> currentPathList = Arrays.asList(currentPath.split(shellTuples.get(shell)[1]));
         currentPathList = currentPathList.subList(1, currentPathList.size());
-        Set<String> newPathList = new HashSet<>(Arrays.asList(newPath.split(shellTuples.get(shell)[2])));
+        Set<String> newPathList = new HashSet<>(Arrays.asList(newPath.split(":"))); //this is the standard from memory
         //clean strings removing \n and \r and trimming
 	Set<String> cleanNewPathList = new HashSet<>();
 	for(String current: newPathList){
