@@ -9,6 +9,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import java.util.ArrayList;
 
 public class UserSaveCommand implements SavePathCommand {
     private BuildPathString pathClient = BuildPathString.getBuildPathClient();
@@ -16,29 +17,37 @@ public class UserSaveCommand implements SavePathCommand {
     public void update(String newPath) throws IOException, InterruptedException {
     String homeDir = System.getProperty("user.home");
     Path bashrcPath = Paths.get(homeDir, ".bashrc");
-    
+    String currentPath = "";
     try {
         List<String> lines = Files.readAllLines(bashrcPath, StandardCharsets.UTF_8);
-        int pathIndex = 0;
-        int currentIndex = 0;
-        String currentPathString = "";
-        for(String current : lines) {
-            if(current.contains("export PATH=")){
-                pathIndex = currentIndex;
-                currentPathString = current;
-                break;
-            }
-            currentIndex++;
-        }
-        if(currentPathString.equals("")) {
-            System.out.println("Modifying existing path");
-            lines.add("export PATH="+ newPath);
-        }else{
-            String newPathString = pathClient.buildPathString(currentPathString, newPath);
-            System.out.println("Updating current path with " + newPathString);
-            lines.set(pathIndex, newPathString);
-        }
-        Files.write(bashrcPath, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
+        List<String> newLines = new ArrayList<>();
+	// clean up existing PATH entries
+	lines.removeIf(line -> line.startsWith("export PATH="));
+	String startMarker = "#BEGIN LinuxPathManager";
+	String endMarker = "#END LinuxPathManager";
+	boolean inMarker = false;
+	for(String line: lines){
+           if(line.trim().equals(startMarker)){
+		inMarker = true;
+		continue;
+	    }
+	    if(line.trim().equals(endMarker)){
+		inMarker = false;
+		continue;
+	    }
+	    if(inMarker){
+		currentPath += line.trim();
+	    }
+	    if(!inMarker){
+		newLines.add(line);		
+	    }
+	}
+	// add new PATH entry
+	String newPathEntry = pathClient.buildPathString(currentPath,newPath, "bash");
+	newLines.add(startMarker);
+	newLines.add(newPathEntry);
+	newLines.add(endMarker);
+	Files.write(bashrcPath, newLines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
     } catch (IOException e) {
         e.printStackTrace();
 	throw new IOException("Error writing to .bashrc file", e);

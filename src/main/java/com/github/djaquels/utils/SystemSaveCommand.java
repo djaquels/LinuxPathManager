@@ -78,7 +78,7 @@ public class SystemSaveCommand implements SavePathCommand {
 	    lines.add("export PATH=" + newPath);
 	} else {
 	    // If it exists, update it
-	  String newPathString = pathClient.buildPathString(currentPathString,newPath);
+	  String newPathString = pathClient.buildPathString(currentPathString,newPath, "bash");
 	  lines.set(pathIndex, newPathString);
 	}
 	// write to temp file
