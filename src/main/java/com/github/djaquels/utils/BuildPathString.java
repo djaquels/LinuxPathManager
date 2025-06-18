@@ -31,8 +31,8 @@ public  final   class BuildPathString {
 	shellTuples.put("fish", new String[]{"set -gx PATH ", "set -gx PATH ", " "});
 	// Build the new path string
 	String result = shellTuples.get(shell)[0];
-        List<String> currentPathList = Arrays.asList(currentPath.split(shellTuples.get(shell)[1]));
-        currentPathList = currentPathList.subList(1, currentPathList.size());
+        String[] currentPathString = currentPath.split(shellTuples.get(shell)[1]);
+	List<String> currentPathList = Arrays.asList(currentPathString[currentPathString.length-1].split(shellTuples.get(shell)[2]));
         Set<String> newPathList = new HashSet<>(Arrays.asList(newPath.split(":"))); //this is the standard from memory
         //clean strings removing \n and \r and trimming
 	Set<String> cleanNewPathList = new HashSet<>();
@@ -44,10 +44,12 @@ public  final   class BuildPathString {
         }
 	cleanNewPathList.add("/bin");
 	cleanNewPathList.add("/usr/bin");//always add these two paths for security reasons
-        // remove duplicates 
+        // add missing 
 	for(String current: currentPathList){
-	  String clean = current.replaceAll("[\\n\\r]", "").trim();		
-	  cleanNewPathList.remove(clean);
+	  String clean = current.replaceAll("[\\n\\r]", "").trim();
+	  if(!clean.isEmpty()){
+	     cleanNewPathList.add(clean);
+	  }
         }
         result = result + String.join(shellTuples.get(shell)[2], cleanNewPathList);
         return result;

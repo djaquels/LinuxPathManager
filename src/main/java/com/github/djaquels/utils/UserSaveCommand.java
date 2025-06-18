@@ -44,8 +44,6 @@ public class UserSaveCommand implements SavePathCommand {
 				try {
 					List<String> lines = Files.readAllLines(bashrcPath, StandardCharsets.UTF_8);
 					List<String> newLines = new ArrayList<>();
-					// clean up existing PATH entries
-					lines.removeIf(line -> line.startsWith(shellFilters.get(shellName)));
 					String startMarker = "#BEGIN LinuxPathManager";
 					String endMarker = "#END LinuxPathManager";
 					boolean inMarker = false;
@@ -61,14 +59,14 @@ public class UserSaveCommand implements SavePathCommand {
 						if(inMarker){
 						currentPath += line.trim();
 						}
-	    				if(!inMarker){
+	    				        if(!inMarker){
 							newLines.add(line);		
-	    				}
+	    				        }
 					}
 					// add new PATH entry
 					String newPathEntry = pathClient.buildPathString(currentPath,newPath, shellName);
 					newLines.add(startMarker);
-					newLines.add(newPathEntry);
+					newLines.add(newPathEntry.trim());
 					newLines.add(endMarker);
 					Files.write(bashrcPath, newLines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
     			} catch (IOException e) {
