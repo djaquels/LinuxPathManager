@@ -44,31 +44,45 @@ public class UserSaveCommand implements SavePathCommand {
 				try {
 					List<String> lines = Files.readAllLines(bashrcPath, StandardCharsets.UTF_8);
 					List<String> newLines = new ArrayList<>();
-					// clean up existing PATH entries
-					lines.removeIf(line -> line.startsWith(shellFilters.get(shellName)));
 					String startMarker = "#BEGIN LinuxPathManager";
 					String endMarker = "#END LinuxPathManager";
 					boolean inMarker = false;
+					boolean afterEnd = false;
 					for(String line: lines){
 						if(line.trim().equals(startMarker)){
 							inMarker = true;
+							System.out.println("Found start marker!!!!!: " + line);
 							continue;
 						}
 						if(line.trim().equals(endMarker)){
+							System.out.println("Found end marker!!!!!: " + line);
 							inMarker = false;
+							afterEnd = true;
 							continue;
 						}
 						if(inMarker){
+						System.out.println("Skipping line in marker:!!!!!" + line);	
 						currentPath += line.trim();
 						}
-	    				if(!inMarker){
+	    				        if(!inMarker){
+                                                        if(afterEnd){
+							  System.out.println("Skipping line after end marker:!!!!!" + line);
+							}
 							newLines.add(line);		
-	    				}
+	    				        }
 					}
 					// add new PATH entry
 					String newPathEntry = pathClient.buildPathString(currentPath,newPath, shellName);
+					System.out.println("New PATH: " + newPath);
+					System.out.println("New PATH entry: " + newPathEntry);
+					System.out.println("Current PATH: " + currentPath);
+                          		System.out.println("Shell: " + shellName);
+                                        System.out.println("Bashrc Path: " + bashrcPath);
+					// last lines verification
+					System.out.println("Sample lines: " + newLines.size());
+					System.out.println(newLines.subList(Math.max(0, newLines.size() - 5), newLines.size()).toString());
 					newLines.add(startMarker);
-					newLines.add(newPathEntry);
+					newLines.add(newPathEntry.trim());
 					newLines.add(endMarker);
 					Files.write(bashrcPath, newLines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
     			} catch (IOException e) {
