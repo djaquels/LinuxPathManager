@@ -3,6 +3,8 @@ package com.github.djaquels;
 import com.github.djaquels.utils.PathCommand;
 import com.github.djaquels.utils.LanguageUtils;
 import com.github.djaquels.ui.Labels;
+import com.github.djaquels.utils.EnvVariableSaver;
+import com.github.djaquels.utils.SavePathCommand;
 import org.json.JSONObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,10 +20,12 @@ import javafx.stage.Stage;
 public class EnvVars  {
      private final PathCommand envVarsCommand;
      private Labels conf;
+     private final SavePathCommand saveCommand;
 
     public EnvVars(PathCommand envVarsCommand) {
         this.envVarsCommand = envVarsCommand;
         this.conf = LanguageUtils.getWindowConfs();
+        this.saveCommand = new EnvVariableSaver();
     }
 
     public void showWindow(Stage parentStage) {
@@ -80,7 +84,7 @@ public class EnvVars  {
         saveButton.setOnAction(e -> {
             // Implement your save logic here, e.g., call a SaveEnvVarsCommand or similar
             // For example:
-            // saveEnvVarsCommand.execute(envVarsList);
+            this.saveCommand.execute(envVarsList);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle(mainWindow.getString("success"));
             alert.setHeaderText(null);
