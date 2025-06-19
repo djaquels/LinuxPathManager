@@ -1,5 +1,7 @@
 {
     "appName": "Path Manager",
+    "error": "error",
+    "success": "success",
     "main": {
         "readUsers": "Current users PATH",
         "readSystem": "Current systems PATH",
@@ -32,6 +34,20 @@
 	"error-header": "No item selected",
 	"error-label": "Please select one item",
 	"sudo-label": "You need to run this app as administrator to save changes to system PATH",
-	"password-label": "password"
+	"password-label": "password",
+    "wrong-password":"Sudo password is required to save system paths.",
+    "user-saved": "User PATH updated successfully.",
+    "system-saved": "System PATH updated successfully."
+    },
+    "envVars": {
+        "key": "key",
+        "value": "value",
+        "add": "add",
+        "update": "update",
+        "save": "save",
+        "delete": "delete",
+        "success": "Saved!",
+        "success-message": "Environment variables saved!",
+        "edit-message": "Edit Environment Variables"
     }
 }

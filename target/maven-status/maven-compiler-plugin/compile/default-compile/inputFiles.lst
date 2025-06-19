@@ -1,8 +1,11 @@
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/App.java
+/home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/EnvVars.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/Main.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/ui/Labels.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/BuildPathString.java
+/home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/EnvVariablesCommand.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/GlobalPathCommand.java
+/home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/LanguageUtils.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/PathCommand.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/ReadPathInvoker.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/SavePathCommand.java

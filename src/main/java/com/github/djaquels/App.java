@@ -9,6 +9,9 @@ import com.github.djaquels.utils.SavePathCommand;
 import com.github.djaquels.utils.UserSaveCommand;
 import com.github.djaquels.utils.StringUtils;
 import com.github.djaquels.utils.SystemSaveCommand;
+import com.github.djaquels.utils.EnvVariablesCommand;
+import com.github.djaquels.utils.LanguageUtils;
+
 //import com.github.djaquels.utils.savePathCommand;
 
 import java.util.Locale;
@@ -52,19 +55,11 @@ public class App extends Application {
     }
 
     private String getLocalLanguage() {
-        Locale currentLocale = Locale.getDefault();
-        String language = currentLocale.getLanguage();
-        HashMap languagesMap = new HashMap<String, String>();
-        languagesMap.put("en", "english");
-        languagesMap.put("sv", "swedish");
-        String appLanguage = (languagesMap.containsKey(language)) ? languagesMap.get(language).toString() : "english";
-        return appLanguage;
+       return LanguageUtils.getLocalLanguage();
     }
 
     private Labels getWindowConfs() {
-        String appLanguage = getLocalLanguage();
-        Labels conf = Labels.getInstance(appLanguage);
-        return conf;
+       return LanguageUtils.getWindowConfs();
     }
 
     @Override
@@ -83,7 +78,7 @@ public class App extends Application {
         updatePath(new GlobalPathCommand(), systemPathList);
         userPathAsString = String.join(":", userPathList);
         userPathMD5 = StringUtils.getMD5(userPathAsString);
-	systemPathMD5 = StringUtils.getMD5(String.join(":", systemPathList));
+	    systemPathMD5 = StringUtils.getMD5(String.join(":", systemPathList));
         /*
          * Controll panel buttons
          * Add new to PATH
@@ -114,10 +109,6 @@ public class App extends Application {
         Button updateButton = new Button(mainWindow.getString("update"));
         updateButton.setOnAction(e -> updateButtonAction(userListView, systemListView, pathField.getText()));
 
-        // Save
-        Button saveButton = new Button(mainWindow.getString("save"));
-        saveButton.setOnAction(e -> savePathAction());
-
         // Delete
 
         Button deleButton = new Button(mainWindow.getString("delete"));
@@ -125,10 +116,17 @@ public class App extends Application {
 
         // Env Vars Window
         Button toEnvVars = new Button(mainWindow.getString("to-env"));
+        toEnvVars.setOnAction(e -> {
+        EnvVars envWindow = new EnvVars(new EnvVariablesCommand());
+            envWindow.showWindow(primaryStage);
+        });
+        // Save
+        Button saveButton = new Button(mainWindow.getString("save"));
+        saveButton.setOnAction(e -> savePathAction());
 
         // Buttons layout
         HBox buttonBox = new HBox(10); // 10 är mellanrummet mellan knapparna
-        buttonBox.getChildren().addAll(addButton, updateButton, saveButton, deleButton, toEnvVars);
+        buttonBox.getChildren().addAll(addButton, updateButton, deleButton, saveButton, toEnvVars);
 
         VBox layout = new VBox(10);
         layout.getChildren().addAll(userPathLabel, userListView, systemPathLabel, systemListView, pathField, buttonBox);
@@ -172,29 +170,33 @@ public class App extends Application {
     }
 
     private void savePathAction() {
-        if (this.isUserViewActive == null) {
-            return;
-        }
         String onMemoryUserPath = String.join(":", userPathList);
         String onMemoryUserMd5 = StringUtils.getMD5(onMemoryUserPath);
-	String onMemorySystemPath = String.join(":", systemPathList);
-	String onMemorySystemMd5 = StringUtils.getMD5(onMemorySystemPath);
-        if (this.isUserViewActive && !onMemoryUserMd5.equals(userPathMD5)) {
+	    String onMemorySystemPath = String.join(":", systemPathList);
+	    String onMemorySystemMd5 = StringUtils.getMD5(onMemorySystemPath);
+        Labels conf = getWindowConfs();
+        String errorHeader = conf.getValue("error");
+        String successHeader = conf.getValue("success");
+        JSONObject windowLabels = conf.getWindowLabels("save");
+        if (!onMemoryUserMd5.equals(userPathMD5)) {
             saveUserPathCommand.execute(userPathList);
             userPathMD5 = onMemoryUserMd5;
-        }else{
-	   if(onMemorySystemMd5.equals(systemPathMD5)){
-	    return;
-	   }
-           String sudoPassword = promptForSudoPassword();
-	   if (sudoPassword != null && !sudoPassword.isEmpty()) {
+            String message = windowLabels.getString("user-saved");
+            showSuccessDialog(successHeader, message);
+        }
+	    if(!onMemorySystemMd5.equals(systemPathMD5)){
+            String sudoPassword = promptForSudoPassword();
+	    if (sudoPassword != null && !sudoPassword.isEmpty()) {
 	       SavePathCommand saveSystemPathCommand = new SystemSaveCommand(sudoPassword);
 	       saveSystemPathCommand.execute(systemPathList);
+           String message = windowLabels.getString("system-saved");
 	       systemPathMD5 = onMemorySystemMd5;
-	   } else {
-	       showErrorDialog("Error", "Sudo password is required to save system paths.");
-	   }
-	}
+           showSuccessDialog(successHeader, message);
+	    } else {
+           String message = windowLabels.getString("wrong-password");
+	       showErrorDialog(errorHeader, message);
+	        }
+	    }
 
     }
 
@@ -260,6 +262,14 @@ public class App extends Application {
 
     private void showErrorDialog(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private void showSuccessDialog(String title, String content){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
