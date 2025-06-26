@@ -1,0 +1,54 @@
+{
+    "appName": "Path Manager",
+    "error": "error",
+    "success": "success",
+    "main": {
+        "readUsers": "Current users PATH",
+        "readSystem": "Current systems PATH",
+        "save": "Save",
+        "add": "Add new value",
+        "add-label": "Path value",
+        "update": "Edit value",
+        "delete": "Delete item",
+        "to-env": "Open environment vars",
+        "ssh": "Open remote server"
+    },
+    "add": {
+        "header": "Add to PATH",
+        "label": "Select where do you want to store the new path value",
+        "action": "Do you want to store at user or system level?",
+        "user-label": "User PATH",
+        "system-label": "System PATH",
+        "cancel-label": "Cancel"
+    },
+    "delete": {
+        "header": "Delete",
+        "title": "Confirm",
+        "confirm-label": "Are you sure you want to remove: ",
+        "error-header": "No item selected",
+        "error-label": "Please select one item"
+    },
+    "save": {
+	"header": "Save",
+	"title": "Confirm",
+	"confirm-label": "Are you sure you want to save the changes?",
+	"error-header": "No item selected",
+	"error-label": "Please select one item",
+	"sudo-label": "You need to run this app as administrator to save changes to system PATH",
+	"password-label": "password",
+    "wrong-password":"Sudo password is required to save system paths.",
+    "user-saved": "User PATH updated successfully.",
+    "system-saved": "System PATH updated successfully."
+    },
+    "envVars": {
+        "key": "key",
+        "value": "value",
+        "add": "add",
+        "update": "update",
+        "save": "save",
+        "delete": "delete",
+        "success": "Saved!",
+        "success-message": "Environment variables saved!",
+        "edit-message": "Edit Environment Variables"
+    }
+}

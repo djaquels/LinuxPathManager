@@ -1,0 +1,7 @@
+Package: linuxpathmanager
+Version: 1.0
+Architecture: all
+Maintainer: Hector Jacales <daniel.jacales@outlook.com>
+Depends: openjdk-11-jre, libopenjfx-java (>= 11)
+Description: GUI tool to manage PATH in Linux.
+Homepage: https://github.com/djaquels/LinuxPathManager

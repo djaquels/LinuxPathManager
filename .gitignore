@@ -1,0 +1,7 @@
+./target/**
+target/**
+linuxpathmanager/**
+linuxpathmanager/*
+./linuxpathmanager/**
+./linuxpathmanager.deb
+**.deb

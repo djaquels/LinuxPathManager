@@ -1,0 +1,61 @@
+{
+    "appName": "Path Direktör",
+    "error": "fel",
+    "success": "lycka",
+    "main": {
+        "readUsers": "Nurvarande användarens PATH",
+        "readSystem": "Nurvarande systemets PATH",
+        "save": "Spara",
+        "add": "Skapa en ny var",
+        "add-label": "Path värde",
+        "update": "Updatera värde",
+        "delete": "Ta bort från listan",
+        "to-env": "Öppna miljö vars",
+        "ssh": "Öppna fjärrserver"
+    },
+    "add": {
+        "header": "Lägg till PATH",
+        "label": "Välj var du vill lägga till sökvägen",
+        "action": "Vill du lägga till i användar-PATH eller system-PATH?",
+        "user-label": "Användar-PATH",
+        "system-label": "System-PATH",
+        "cancel-label": "Avbryt"
+    },
+    "delete": {
+        "header": "Ta bort",
+        "title": "Bekräfta borttagnin",
+        "confirm-label": "Är du säker på att du vill ta bort: ",
+        "error-header": "Ingen sökväg väld",
+        "error-label": "Vänligen välj ett sökväg för att ta bort."
+    },
+    "update": {
+        "header": "Uppdatera value",
+        "title": "Bekräfta uppdatering",
+        "error-header": "Ingen sökväg väld",
+        "error-label": "Vänligen välj ett sökväg för att uppdatera.",
+        "confirm-label": "Är du säker på att du vill uppdatera: "
+    },
+    "save": {
+	"header": "Spara PATH",
+	"title": "Bekräfta sparning",
+	"error-header": "Ingen sökväg väld",
+	"error-label": "Vänligen välj en sökväg för att spara.",
+	"confirm-label": "Är du säker på att du vill spara: ",
+	"sudo-label": "Skappa sudo lösenord för att spara system-PATH:",
+	"password-label": "Lösenord",
+    "wrong-password": "Sudo-lösenord krävs för att spara systemsökvägar.",
+    "user-saved": "Användarens PATH har uppdaterats.",
+    "system-saved": "Systemet PATH har uppdaterats."
+    },
+     "envVars": {
+        "key": "nyckel",
+        "value": "värde",
+        "add": "skappa",
+        "update": "uppdatera",
+        "save": "spara",
+        "delete": "ta bort",
+        "success": "Sparad!",
+        "success-message": "Miljövariabler sparade!",
+        "edit-message": "Redigera miljövariabler"
+    }
+}

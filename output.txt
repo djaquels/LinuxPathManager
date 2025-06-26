@@ -1,0 +1,94 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-----------------< [0;36mcom.github.djaquels:linux-path-gui[0;1m >-----------------[m
+[[1;34mINFO[m] [1mBuilding linux-path-gui 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:3.4.0:clean[m [1m(default-clean)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/hector/Dokument/linux-path-gui/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Copying 2 resources from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged source code[m.
+[[1;34mINFO[m] Compiling 10 source files with javac [debug release 11] to target/classes
+[[1;34mINFO[m] /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/App.java: /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/App.java uses unchecked or unsafe operations.
+[[1;34mINFO[m] /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/App.java: Recompile with -Xlint:unchecked for details.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] skip non existing resourceDirectory /home/hector/Dokument/linux-path-gui/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 1 source file with javac [debug release 11] to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.3.0:test[m [1m(default-test)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running com.github.djaquels.[1mAppTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.284 s -- in com.github.djaquels.[1mAppTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 1, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.4.2:jar[m [1m(default-jar)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/hector/Dokument/linux-path-gui/target/linux-path-gui-1.0-SNAPSHOT.jar
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  19.836 s
+[[1;34mINFO[m] Finished at: 2025-05-15T15:42:01+02:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-----------------< [0;36mcom.github.djaquels:linux-path-gui[0;1m >-----------------[m
+[[1;34mINFO[m] [1mBuilding linux-path-gui 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:3.4.0:clean[m [1m(default-clean)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/hector/Dokument/linux-path-gui/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Copying 2 resources from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged source code[m.
+[[1;34mINFO[m] Compiling 10 source files with javac [debug release 11] to target/classes
+[[1;34mINFO[m] /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/App.java: /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/App.java uses unchecked or unsafe operations.
+[[1;34mINFO[m] /home/hector/Dokument/linux-path-gui/src/main/java/com/github/djaquels/App.java: Recompile with -Xlint:unchecked for details.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] skip non existing resourceDirectory /home/hector/Dokument/linux-path-gui/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 1 source file with javac [debug release 11] to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.3.0:test[m [1m(default-test)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running com.github.djaquels.[1mAppTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.177 s -- in com.github.djaquels.[1mAppTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 1, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.4.2:jar[m [1m(default-jar)[m @ [36mlinux-path-gui[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/hector/Dokument/linux-path-gui/target/linux-path-gui-1.0-SNAPSHOT.jar
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  10.563 s
+[[1;34mINFO[m] Finished at: 2025-05-15T15:43:02+02:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
