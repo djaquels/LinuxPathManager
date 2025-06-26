@@ -10,6 +10,7 @@ import com.github.djaquels.utils.UserRemotePathCommand;
 import com.github.djaquels.utils.SavePathCommand;
 import com.github.djaquels.utils.UserSaveCommand;
 import com.github.djaquels.utils.RemoteUserSaveCommand;
+import com.github.djaquels.utils.SystemRemoteSaveCommand;
 import com.github.djaquels.utils.StringUtils;
 import com.github.djaquels.utils.SystemSaveCommand;
 import com.github.djaquels.utils.EnvVariablesCommand;
@@ -73,6 +74,12 @@ public class App extends Application {
     private void updatePath(PathCommand command, ObservableList<String> pathList) {
         invoker.setCommand(command);
         pathList.setAll(invoker.fetchPath());
+    }
+
+    private void updateMD5Signatures(){
+        userPathAsString = String.join(":", userPathList);
+        userPathMD5 = StringUtils.getMD5(userPathAsString);
+	    systemPathMD5 = StringUtils.getMD5(String.join(":", systemPathList));
     }
 
     private String getLocalLanguage() {
@@ -203,20 +210,20 @@ public class App extends Application {
         String errorHeader = conf.getValue("error");
         String successHeader = conf.getValue("success");
         JSONObject windowLabels = conf.getWindowLabels("save");
-        saveUserPathCommand = (remoteModeActive)? new UserSaveCommand() : new RemoteUserSaveCommand(remoteUsername, remoteHost, remotePort, remotePassword);
+        saveUserPathCommand = (remoteModeActive == true)? new RemoteUserSaveCommand(remoteUsername, remoteHost, remotePort, remotePassword): new UserSaveCommand();
         if (!onMemoryUserMd5.equals(userPathMD5)) {
             saveUserPathCommand.execute(userPathList);
-            userPathMD5 = onMemoryUserMd5;
+            updateMD5Signatures();
             String message = windowLabels.getString("user-saved");
             showSuccessDialog(successHeader, message);
         }
 	    if(!onMemorySystemMd5.equals(systemPathMD5)){
             String sudoPassword = promptForSudoPassword();
 	    if (sudoPassword != null && !sudoPassword.isEmpty()) {
-	       SavePathCommand saveSystemPathCommand = new SystemSaveCommand(sudoPassword);
+	       SavePathCommand saveSystemPathCommand = (remoteModeActive == true)? new SystemRemoteSaveCommand(remoteUsername, remoteHost, remotePort, remotePassword): new SystemSaveCommand(sudoPassword);
 	       saveSystemPathCommand.execute(systemPathList);
            String message = windowLabels.getString("system-saved");
-	       systemPathMD5 = onMemorySystemMd5;
+	       updateMD5Signatures();
            showSuccessDialog(successHeader, message);
 	    } else {
            String message = windowLabels.getString("wrong-password");
@@ -359,11 +366,13 @@ public class App extends Application {
             PathCommand remoteCmd = PathCommandFactory.createUserRemotePathCommand(username, host, port, password.isEmpty() ? null : password);
             try {
                 updatePath(remoteCmd, userPathList);
+                updateMD5Signatures();
                 remoteModeLabel.setText("Remote mode: " + username + "@" + host + ":" + port);
                 remoteHost = host;
                 remoteUsername = username;
                 remotePort = port;
                 remotePassword = password;
+                remoteModeActive = true;
                 dialog.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -374,11 +383,12 @@ public class App extends Application {
             PathCommand globalRemoteCmd = PathCommandFactory.createGlobalRemotePathCommand(username, host, port, password.isEmpty() ? null : password);
             try {
                 updatePath(globalRemoteCmd, systemPathList);
+                updateMD5Signatures();
                 remoteModeLabel.setText("Remote mode: " + username + "@" + host + ":" + port);
                 dialog.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                statusLabel.setText("Connection failed. Using local PATH.");
+                statusLabel.setText("Connection failed. Using system PATH.");
                 remoteModeLabel.setText("");
             }
         });

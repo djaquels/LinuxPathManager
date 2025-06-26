@@ -11,6 +11,7 @@ com/github/djaquels/Main.class
 com/github/djaquels/utils/GlobalPathCommand.class
 com/github/djaquels/utils/UserPathCommand.class
 com/github/djaquels/utils/SystemSaveCommand.class
+com/github/djaquels/utils/SystemRemoteSaveCommand.class
 com/github/djaquels/utils/EnvVariableSaver.class
 com/github/djaquels/utils/SavePathCommand.class
 com/github/djaquels/utils/LanguageUtils.class
