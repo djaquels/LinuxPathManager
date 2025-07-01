@@ -18,7 +18,6 @@ public class LanguageUtils {
     public static String getLocalLanguage() {
         Locale currentLocale = Locale.getDefault();
         String language = currentLocale.getLanguage();
-        System.out.println("Language running: " + language);
         return languagesMap.getOrDefault(language, "english");
     }
 
