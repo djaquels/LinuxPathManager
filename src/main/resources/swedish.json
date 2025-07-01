@@ -10,7 +10,8 @@
         "add-label": "Path värde",
         "update": "Updatera värde",
         "delete": "Ta bort från listan",
-        "to-env": "Öppna miljö vars"
+        "to-env": "Öppna miljö vars",
+        "ssh": "Öppna fjärrserver"
     },
     "add": {
         "header": "Lägg till PATH",

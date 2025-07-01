@@ -3,7 +3,6 @@ package com.github.djaquels;
 import com.github.djaquels.utils.PathCommand;
 import com.github.djaquels.utils.LanguageUtils;
 import com.github.djaquels.ui.Labels;
-import com.github.djaquels.utils.EnvVariableSaver;
 import com.github.djaquels.utils.SavePathCommand;
 import org.json.JSONObject;
 import javafx.collections.FXCollections;
@@ -21,11 +20,15 @@ public class EnvVars  {
      private final PathCommand envVarsCommand;
      private Labels conf;
      private final SavePathCommand saveCommand;
+    // Remote controlers
+    private Label remoteModeLabel;
+    private Boolean remoteModeActive;
 
-    public EnvVars(PathCommand envVarsCommand) {
+    public EnvVars(PathCommand envVarsCommand, SavePathCommand envVarsSaveCommand, Boolean isRemote) {
+        this.remoteModeActive = isRemote;
         this.envVarsCommand = envVarsCommand;
         this.conf = LanguageUtils.getWindowConfs();
-        this.saveCommand = new EnvVariableSaver();
+        this.saveCommand = envVarsSaveCommand;
     }
 
     public void showWindow(Stage parentStage) {
@@ -37,7 +40,13 @@ public class EnvVars  {
         keyField.setPromptText(mainWindow.getString("key"));
         TextField valueField = new TextField();
         valueField.setPromptText(mainWindow.getString("value"));
-
+        remoteModeLabel = new Label("");
+        remoteModeLabel.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
+        if(remoteModeActive){
+            remoteModeLabel.setText("Remote mode is active");
+        }else{
+            remoteModeLabel.setText("");
+        }
         Button addButton = new Button(mainWindow.getString("add"));
         Button updateButton = new Button(mainWindow.getString("update"));
         Button deleteButton = new Button(mainWindow.getString("delete"));
@@ -93,7 +102,7 @@ public class EnvVars  {
         });
 
         HBox inputBox = new HBox(5, keyField, valueField, addButton, updateButton, deleteButton, saveButton);
-        VBox layout = new VBox(10, listView, inputBox);
+        VBox layout = new VBox(10, listView, inputBox, remoteModeLabel);
 
         Stage dialog = new Stage();
         dialog.initOwner(parentStage);

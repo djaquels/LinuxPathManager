@@ -3,6 +3,7 @@ package com.github.djaquels.utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Collections;
 
 public class EnvVariablesCommand implements PathCommand {
 
@@ -22,6 +23,7 @@ public class EnvVariablesCommand implements PathCommand {
         if(result.size() == 0 ){
             this.execute();
         }
+        Collections.sort(result);
         return result;
     }
 }

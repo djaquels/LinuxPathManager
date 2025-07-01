@@ -10,7 +10,8 @@
         "add-label": "Path value",
         "update": "Edit value",
         "delete": "Delete item",
-        "to-env": "Open environment vars"
+        "to-env": "Open environment vars",
+        "ssh": "Open remote server"
     },
     "add": {
         "header": "Add to PATH",
