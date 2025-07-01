@@ -14,6 +14,9 @@ import com.github.djaquels.utils.SystemRemoteSaveCommand;
 import com.github.djaquels.utils.StringUtils;
 import com.github.djaquels.utils.SystemSaveCommand;
 import com.github.djaquels.utils.EnvVariablesCommand;
+import com.github.djaquels.utils.EnvVariableSaver;
+import com.github.djaquels.utils.RemoteEnvVariableSaver;
+import com.github.djaquels.utils.RemoteEnvVariablesCommand;
 import com.github.djaquels.utils.LanguageUtils;
 import com.github.djaquels.utils.PathCommandFactory;
 
@@ -146,7 +149,9 @@ public class App extends Application {
         // Env Vars Window
         Button toEnvVars = new Button(mainWindow.getString("to-env"));
         toEnvVars.setOnAction(e -> {
-        EnvVars envWindow = new EnvVars(new EnvVariablesCommand());
+        PathCommand cmd = (remoteModeActive)? new RemoteEnvVariablesCommand(remoteUsername, remoteHost, remotePort, remotePassword) : new EnvVariablesCommand();    
+        SavePathCommand saveCMD = (remoteModeActive)? new RemoteEnvVariableSaver(remoteUsername, remoteHost, remotePort, remotePassword): new EnvVariableSaver();
+        EnvVars envWindow = new EnvVars(cmd, saveCMD, remoteModeActive);
             envWindow.showWindow(primaryStage);
         });
         // Save
