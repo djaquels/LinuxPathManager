@@ -57,5 +57,13 @@
         "success": "Sparad!",
         "success-message": "Miljövariabler sparade!",
         "edit-message": "Redigera miljövariabler"
+    },
+     "ssh": {
+        "username":"Användarnamn:",
+        "host":"Host:",
+        "port":"Port:",
+        "password":"Lösenord:",
+        "connect":"Ansluta",
+        "cancel":"Avboka"
     }
 }

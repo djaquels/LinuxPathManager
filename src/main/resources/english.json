@@ -50,5 +50,13 @@
         "success": "Saved!",
         "success-message": "Environment variables saved!",
         "edit-message": "Edit Environment Variables"
+    },
+    "ssh": {
+        "username":"Username:",
+        "host":"Host:",
+        "port":"Port:",
+        "password":"Password:",
+        "connect":"Connect",
+        "cancel":"Cancel"
     }
 }

@@ -333,17 +333,20 @@ public class App extends Application {
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle("SSH Connection");
 
-        Label usernameLabel = new Label("Username:");
+        Labels conf = getWindowConfs();
+	    JSONObject sshDialogLabels = conf.getWindowLabels("ssh");
+
+        Label usernameLabel = new Label(sshDialogLabels.getString("username"));
         TextField usernameField = new TextField();
-        Label hostLabel = new Label("Host:");
+        Label hostLabel = new Label(sshDialogLabels.getString("host"));
         TextField hostField = new TextField();
-        Label portLabel = new Label("Port:");
+        Label portLabel = new Label(sshDialogLabels.getString("port"));
         TextField portField = new TextField("22");
-        Label passwordLabel = new Label("Password (optional):");
+        Label passwordLabel = new Label(sshDialogLabels.getString("password"));
         PasswordField passwordField = new PasswordField();
 
-        Button connectButton = new Button("Connect");
-        Button cancelButton = new Button("Cancel");
+        Button connectButton = new Button(sshDialogLabels.getString("connect"));
+        Button cancelButton = new Button(sshDialogLabels.getString("cancel"));
         Label statusLabel = new Label();
 
         connectButton.setDefaultButton(true);
