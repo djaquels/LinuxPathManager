@@ -11,12 +11,14 @@ public class LanguageUtils {
     static {
         languagesMap.put("en", "english");
         languagesMap.put("sv", "swedish");
+        languagesMap.put("fr", "french");
     }
 
     // Returns the app language string, e.g., "english"
     public static String getLocalLanguage() {
         Locale currentLocale = Locale.getDefault();
         String language = currentLocale.getLanguage();
+        System.out.println("Language running: " + language);
         return languagesMap.getOrDefault(language, "english");
     }
 

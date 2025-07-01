@@ -1,0 +1,62 @@
+{
+  "appName": "Gestionnaire de Chemin",
+  "error": "erreur",
+  "success": "succès",
+  "main": {
+    "readUsers": "PATH utilisateur actuel",
+    "readSystem": "PATH système actuel",
+    "save": "Enregistrer",
+    "add": "Ajouter une nouvelle valeur",
+    "add-label": "Valeur du chemin",
+    "update": "Modifier la valeur",
+    "delete": "Supprimer l'élément",
+    "to-env": "Ouvrir les variables d'environnement",
+    "ssh": "Ouvrir le serveur distant"
+  },
+  "add": {
+    "header": "Ajouter au PATH",
+    "label": "Sélectionnez où vous souhaitez enregistrer la nouvelle valeur de chemin",
+    "action": "Voulez-vous enregistrer au niveau utilisateur ou système ?",
+    "user-label": "PATH utilisateur",
+    "system-label": "PATH système",
+    "cancel-label": "Annuler"
+  },
+  "delete": {
+    "header": "Supprimer",
+    "title": "Confirmer",
+    "confirm-label": "Êtes-vous sûr de vouloir supprimer : ",
+    "error-header": "Aucun élément sélectionné",
+    "error-label": "Veuillez sélectionner un élément"
+  },
+  "save": {
+    "header": "Enregistrer",
+    "title": "Confirmer",
+    "confirm-label": "Êtes-vous sûr de vouloir enregistrer les modifications ?",
+    "error-header": "Aucun élément sélectionné",
+    "error-label": "Veuillez sélectionner un élément",
+    "sudo-label": "Vous devez exécuter cette application en tant qu'administrateur pour enregistrer les modifications du PATH système",
+    "password-label": "mot de passe",
+    "wrong-password": "Le mot de passe sudo est requis pour enregistrer les chemins système.",
+    "user-saved": "PATH utilisateur mis à jour avec succès.",
+    "system-saved": "PATH système mis à jour avec succès."
+  },
+  "envVars": {
+    "key": "clé",
+    "value": "valeur",
+    "add": "ajouter",
+    "update": "mettre à jour",
+    "save": "save",
+    "delete": "supprimer",
+    "success": "Enregistré !",
+    "success-message": "Variables d'environnement enregistrées !",
+    "edit-message": "Modifier les variables d'environnement"
+  },
+  "ssh": {
+    "username": "Nom d'utilisateur :",
+    "host": "Hôte :",
+    "port": "Port :",
+    "password": "Mot de passe :",
+    "connect": "Connexion",
+    "cancel": "Annuler"
+  }
+}
