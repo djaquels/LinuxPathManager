@@ -1,0 +1,62 @@
+{
+  "appName": "Administrador de Rutas",
+  "error": "error",
+  "success": "éxito",
+  "main": {
+    "readUsers": "PATH del usuario actual",
+    "readSystem": "PATH del sistema actual",
+    "save": "Guardar",
+    "add": "Agregar nuevo valor",
+    "add-label": "Valor de ruta",
+    "update": "Editar valor",
+    "delete": "Eliminar elemento",
+    "to-env": "Abrir variables de entorno",
+    "ssh": "Abrir servidor remoto"
+  },
+  "add": {
+    "header": "Agregar al PATH",
+    "label": "Seleccione dónde desea guardar la nueva ruta",
+    "action": "¿Desea guardarlo a nivel de usuario o sistema?",
+    "user-label": "PATH de usuario",
+    "system-label": "PATH del sistema",
+    "cancel-label": "Cancelar"
+  },
+  "delete": {
+    "header": "Eliminar",
+    "title": "Confirmar",
+    "confirm-label": "¿Está seguro que desea eliminar: ",
+    "error-header": "Ningún elemento seleccionado",
+    "error-label": "Por favor seleccione un elemento"
+  },
+  "save": {
+    "header": "Guardar",
+    "title": "Confirmar",
+    "confirm-label": "¿Está seguro que desea guardar los cambios?",
+    "error-header": "Ningún elemento seleccionado",
+    "error-label": "Por favor seleccione un elemento",
+    "sudo-label": "Debe ejecutar esta aplicación como administrador para guardar cambios en el PATH del sistema",
+    "password-label": "contraseña",
+    "wrong-password": "Se requiere contraseña sudo para guardar rutas del sistema.",
+    "user-saved": "PATH de usuario actualizado correctamente.",
+    "system-saved": "PATH del sistema actualizado correctamente."
+  },
+  "envVars": {
+    "key": "clave",
+    "value": "valor",
+    "add": "agregar",
+    "update": "actualizar",
+    "save": "guardar",
+    "delete": "eliminar",
+    "success": "¡Guardado!",
+    "success-message": "¡Variables de entorno guardadas!",
+    "edit-message": "Editar variables de entorno"
+  },
+  "ssh": {
+    "username": "Nombre de usuario:",
+    "host": "Servidor:",
+    "port": "Puerto:",
+    "password": "Contraseña:",
+    "connect": "Conectar",
+    "cancel": "Cancelar"
+  }
+}

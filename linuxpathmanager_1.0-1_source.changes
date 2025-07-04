@@ -17,29 +17,29 @@ Changes:
  .
    * Initial release. (Closes: #0001)
 Checksums-Sha1:
- 4b3360458172271fe886cbf26e00f4aabf9615a0 1374 linuxpathmanager_1.0-1.dsc
- 6b7365caa9c6acfd8c863c83ff5a98f96f84f277 9403654 linuxpathmanager_1.0-1.tar.gz
- c696140934445408b52c4319b7d28c55b26ba530 13348 linuxpathmanager_1.0-1_source.buildinfo
+ b89fc8ae89647e8cfb1e2e14924870a5a1d1e95a 1374 linuxpathmanager_1.0-1.dsc
+ 4a6a1edb642b3e224ca1fe5cb477bfb922df56d0 9403948 linuxpathmanager_1.0-1.tar.gz
+ 5dca68000d65c9c4bc5d0ffa272a38566bdc0b93 13348 linuxpathmanager_1.0-1_source.buildinfo
 Checksums-Sha256:
- b2ddb12131123c45a4af3f99c388664df8c66b88b92df926122afc622beb48ea 1374 linuxpathmanager_1.0-1.dsc
- 341b5eb6479a21476b190bce5c9041eac80a61f6b22bc2d48e4c721867217e68 9403654 linuxpathmanager_1.0-1.tar.gz
- 2a6745f6cd54140d3816172a2755a9ab0f52806f258c3640a320b7ec63d2a93c 13348 linuxpathmanager_1.0-1_source.buildinfo
+ c722f8eb1953b4af9922ef084cfc903a0abe72141578a73e9c583c005e12c9ac 1374 linuxpathmanager_1.0-1.dsc
+ 31f724f66978941fa2c497dc0e31435675499945d1dafa0fc437d7c2c516e144 9403948 linuxpathmanager_1.0-1.tar.gz
+ 3ea75712972ced3b06517071901520403cf880326e03b5821c72251c0db42f0e 13348 linuxpathmanager_1.0-1_source.buildinfo
 Files:
- 8d84a2b4fc270fc5d162e1de62dbf206 1374 utils optional linuxpathmanager_1.0-1.dsc
- df0cbc7cfab691e0b6643f1f61685d66 9403654 utils optional linuxpathmanager_1.0-1.tar.gz
- 0a2de0fc6dd7f1c3d8f2e0456c3bb16f 13348 utils optional linuxpathmanager_1.0-1_source.buildinfo
+ fcfee7b65dff4cac72db836d48b066f5 1374 utils optional linuxpathmanager_1.0-1.dsc
+ 44a03b565fa8e4a277be9038a5939d62 9403948 utils optional linuxpathmanager_1.0-1.tar.gz
+ 80c8469597cf6d016be9b1c1532ada54 13348 utils optional linuxpathmanager_1.0-1_source.buildinfo
 
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCgAdFiEELb7FqzD3SEGXzhhqbWejLw+YVl4FAmhj6ikACgkQbWejLw+Y
-Vl4E9Qv/doeYp9+GvvPlv8cvIuiHUp+OeMRcCUAEns49rA4Y4AsgRGYIX3GXvlLJ
-VEDAbWY5iEC+thxLSzFWZpvdLroTq/pgPTsH8fjFQYfDcrFB3zZh9I5575Cx0/pM
-vZSTaWVIIPIXgOk6grLTijSE6SSlxvEXhmVUO73/ZP0u6cmLkPSrNmeIH3r101Lf
-Ra3oVEI2WPQYW4QPl4ZjOi+suTKx/6KVY8/ks2lJsNYDv+IfAlHbCIFYUBT3DAH8
-Ho+wB4n13CQgbDejiBLmmHjBH5vaDy48atwAFm4j5C3laWurUZLxm3tRjnluGkw1
-9wLlHT0Tl241AeWOJI/qzrW7g+OWAZly8vix3u3azi1vv1YbDqqQkzI3op+s91uz
-cYG9z9VuptMgb6dPhcTDnqr7sXUR0qFlr/J1aMPo3AT25SQh0IPwFWJqVD3PAKpJ
-l9jD4unJqXsjMGeiZ4iHFDAsl8PeS7U29E4eZf5pQKMoTGMmbp/OPTI1pBE2+ePk
-QiomWRY3
-=/fQW
+iQGzBAEBCgAdFiEELb7FqzD3SEGXzhhqbWejLw+YVl4FAmhn0nUACgkQbWejLw+Y
+Vl4MrAv+Mv2VrJ05qMXK1VdEMiSzd1qavXKPqDVaYrD6/LhKyD5Qk+HaoaLJhIxw
+8zFqYHgjvM6JzAJudCkPKy8+MfGstsR4iL6TxUZ/+FtoSF9hshM+jzrGGV0wjvTk
+nmnDD1VjAE2mZxPPP4FdhU9AWVsQ9tWctRd6qxXkETwv/cZDWuQGJbqVTPqHlSor
+A8MOQzUkmhB/XLf8AJ/FZPz3crl7+tcqqcME+qnh1NYwz3es52zL1YWvLBjtLcUn
+3uBHaDLa9B3iUwE7W2AXdw2tc87eRe1i2nxFr8TtyjYdZV//9paLxbHxN3OFAyGY
+CxvkuStGTC2gN/TKvR9fvDb014JfJHJd2mORkV5f1rLWhOXom6CteW8Wjn9dPqhE
+pOTrwf0fD7uiABt6AhdpP5NXBnMDGRau7al1q3GU4K+ooD4zrLLfcPDZdedhJiTj
+qdeqdwvaVFogcf4kt0J+YC6nwyZ25KuT6OdvC8rCcgWZRLFX0GU/BiMqPiJFNO/I
+ZdmMwFf4
+=dqHT
 -----END PGP SIGNATURE-----
