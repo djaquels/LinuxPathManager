@@ -1,0 +1,62 @@
+{
+  "appName": "Pfad-Manager",
+  "error": "Fehler",
+  "success": "Erfolg",
+  "main": {
+    "readUsers": "Aktueller Benutzer-PATH",
+    "readSystem": "Aktueller System-PATH",
+    "save": "Speichern",
+    "add": "Neuen Wert hinzufügen",
+    "add-label": "Pfadwert",
+    "update": "Wert bearbeiten",
+    "delete": "Element löschen",
+    "to-env": "Umgebungsvariablen öffnen",
+    "ssh": "Remote-Server öffnen"
+  },
+  "add": {
+    "header": "Zum PATH hinzufügen",
+    "label": "Wählen Sie, wo der neue Pfad gespeichert werden soll",
+    "action": "Möchten Sie auf Benutzer- oder Systemebene speichern?",
+    "user-label": "Benutzer-PATH",
+    "system-label": "System-PATH",
+    "cancel-label": "Abbrechen"
+  },
+  "delete": {
+    "header": "Löschen",
+    "title": "Bestätigen",
+    "confirm-label": "Möchten Sie wirklich entfernen: ",
+    "error-header": "Kein Element ausgewählt",
+    "error-label": "Bitte wählen Sie ein Element aus"
+  },
+  "save": {
+    "header": "Speichern",
+    "title": "Bestätigen",
+    "confirm-label": "Möchten Sie die Änderungen wirklich speichern?",
+    "error-header": "Kein Element ausgewählt",
+    "error-label": "Bitte wählen Sie ein Element aus",
+    "sudo-label": "Sie müssen diese App als Administrator ausführen, um Änderungen am System-PATH zu speichern",
+    "password-label": "Passwort",
+    "wrong-password": "Ein Sudo-Passwort ist erforderlich, um Systempfade zu speichern.",
+    "user-saved": "Benutzer-PATH erfolgreich aktualisiert.",
+    "system-saved": "System-PATH erfolgreich aktualisiert."
+  },
+  "envVars": {
+    "key": "Schlüssel",
+    "value": "Wert",
+    "add": "hinzufügen",
+    "update": "aktualisieren",
+    "save": "speichern",
+    "delete": "löschen",
+    "success": "Gespeichert!",
+    "success-message": "Umgebungsvariablen gespeichert!",
+    "edit-message": "Umgebungsvariablen bearbeiten"
+  },
+  "ssh": {
+    "username": "Benutzername:",
+    "host": "Host:",
+    "port": "Port:",
+    "password": "Passwort:",
+    "connect": "Verbinden",
+    "cancel": "Abbrechen"
+  }
+}
