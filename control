@@ -1,7 +1,13 @@
-Package: linuxpathmanager
-Version: 1.0
-Architecture: all
+Source: linuxpathmanager
+Section: utils
+Priority: optional
 Maintainer: Hector Jacales <daniel.jacales@outlook.com>
-Depends: openjdk-11-jre, libopenjfx-java (>= 11)
-Description: GUI tool to manage PATH in Linux.
+Standards-Version: 4.5.0
 Homepage: https://github.com/djaquels/LinuxPathManager
+Build-Depends: default-jdk, debhelper (>= 9), libopenjfx-java (>= 11)
+
+Package: linuxpathmanager
+Architecture: all
+Depends: default-jre, libopenjfx-java (>= 11)
+Description: GUI tool to manage PATH in Linux.
+ A simple JavaFX-based utility to view and edit the system PATH and environment variables.

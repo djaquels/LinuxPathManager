@@ -9,6 +9,8 @@ mkdir -p linuxpathmanager/usr/share/linuxpathmanager
 mkdir -p linuxpathmanager/usr/share/applications
 # skapa control fil
 cp control linuxpathmanager/DEBIAN
+cp copyright linuxpathmanager/DEBIAN
+cp rules linuxpathmanager/DEBIAN
 cp exec linuxpathmanager/usr/bin/linuxpathmanager
 chmod +x linuxpathmanager/usr/bin/linuxpathmanager
 # kopiera .jar och iconer

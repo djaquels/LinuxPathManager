@@ -1,0 +1,41 @@
+ dpkg-buildpackage -us -uc -ui -S -sa
+dpkg-buildpackage: info: source package linuxpathmanager
+dpkg-buildpackage: info: source version 1.0-1
+dpkg-buildpackage: info: source distribution focal
+dpkg-buildpackage: info: source changed by hector <daniel.jacales@outlook.com>
+ dpkg-source --before-build .
+ fakeroot debian/rules clean
+dh clean
+   dh_clean
+ dpkg-source -b .
+dpkg-source: warning: no source format specified in debian/source/format, see dpkg-source(1)
+dpkg-source: warning: native package version may not have a revision
+dpkg-source: warning: source directory 'linuxpathmanager' is not <sourcepackage>-<upstreamversion> 'linuxpathmanager-1.0'
+dpkg-source: info: using source format '1.0'
+dpkg-source: info: building linuxpathmanager in linuxpathmanager_1.0-1.tar.gz
+dpkg-source: info: building linuxpathmanager in linuxpathmanager_1.0-1.dsc
+ dpkg-genbuildinfo --build=source -O../linuxpathmanager_1.0-1_source.buildinfo
+ dpkg-genchanges -sa --build=source -O../linuxpathmanager_1.0-1_source.changes
+dpkg-genchanges: info: including full source code in upload
+ dpkg-source --after-build .
+dpkg-buildpackage: info: source-only upload: Debian-native package
+Now running lintian linuxpathmanager_1.0-1_source.changes ...
+E: linuxpathmanager source: malformed-debian-changelog-version 1.0-1 (for native) [debian/changelog:1]
+W: linuxpathmanager source: debhelper-but-no-misc-depends linuxpathmanager
+W: linuxpathmanager source: missing-debian-source-format
+W: linuxpathmanager source: no-newline-at-end [debian/control]
+W: linuxpathmanager source: no-newline-at-end [debian/rules]
+W: linuxpathmanager source: syntax-error-in-dep5-copyright Continuation line not in paragraph (line 17). Missing a dot on the previous line? [debian/copyright]
+Finished running lintian.
+Now signing changes and any dsc files...
+long key IDs are discouraged; please use key fingerprints instead
+ signfile dsc linuxpathmanager_1.0-1.dsc 6D67A32F0F98565E
+
+ fixup_buildinfo linuxpathmanager_1.0-1.dsc linuxpathmanager_1.0-1_source.buildinfo
+ signfile buildinfo linuxpathmanager_1.0-1_source.buildinfo 6D67A32F0F98565E
+
+ fixup_changes dsc linuxpathmanager_1.0-1.dsc linuxpathmanager_1.0-1_source.changes
+ fixup_changes buildinfo linuxpathmanager_1.0-1_source.buildinfo linuxpathmanager_1.0-1_source.changes
+ signfile changes linuxpathmanager_1.0-1_source.changes 6D67A32F0F98565E
+
+Successfully signed dsc, buildinfo, changes files
