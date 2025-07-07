@@ -44,15 +44,8 @@ public  final   class BuildPathString {
         }
 	cleanNewPathList.add("/bin");
 	cleanNewPathList.add("/usr/bin");//always add these two paths for security reasons
-        // add missing 
-	for(String current: currentPathList){
-	  String clean = current.replaceAll("[\\n\\r]", "").trim();
-	  if(!clean.isEmpty()){
-	     cleanNewPathList.add(clean);
-	  }
-        }
-        result = result + String.join(shellTuples.get(shell)[2], cleanNewPathList);
-        return result;
+    result = result + String.join(shellTuples.get(shell)[2], cleanNewPathList);
+    return result;
     }
 
 }
