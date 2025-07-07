@@ -12,6 +12,8 @@ public class LanguageUtils {
         languagesMap.put("en", "english");
         languagesMap.put("sv", "swedish");
         languagesMap.put("fr", "french");
+        languagesMap.put("es", "spanish");
+        languagesMap.put("de", "german");
     }
 
     // Returns the app language string, e.g., "english"
