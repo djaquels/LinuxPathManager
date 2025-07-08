@@ -1,0 +1,44 @@
+ dpkg-buildpackage -us -uc -ui -S -sa
+dpkg-buildpackage: info: paquet source linuxpathmanager
+dpkg-buildpackage: info: version source 1.0-1ubuntu3
+dpkg-buildpackage: info: distribution source noble
+dpkg-buildpackage: info: source changé par hector <daniel.jacales@outlook.com>
+ dpkg-source --before-build .
+ fakeroot debian/rules clean
+dh clean
+   dh_clean
+ dpkg-source -b .
+dpkg-source: avertissement: aucun format source indiqué dans debian/source/format, voir dpkg-source(1)
+dpkg-source: avertissement: Le numéro de version indique des modifications provenant d'Ubuntu mais le champ « Maintainer: » ne comporte pas d'adresse Ubuntu
+dpkg-source: avertissement: Le numéro de version indique des modifications provenant d'Ubuntu mais il n'existe pas de champ « XSBC-Original-Maintainer: »
+dpkg-source: avertissement: la version du paquet natif ne peut avoir de numéro de révision
+dpkg-source: avertissement: répertoire source « linuxpathmanager » n'est pas <paquet_source>-<version_amont> « linuxpathmanager-1.0 »
+dpkg-source: info: utilisation du format source « 1.0 »
+dpkg-source: info: construction de linuxpathmanager dans linuxpathmanager_1.0-1ubuntu3.tar.gz
+dpkg-source: info: construction de linuxpathmanager dans linuxpathmanager_1.0-1ubuntu3.dsc
+ dpkg-genbuildinfo --build=source -O../linuxpathmanager_1.0-1ubuntu3_source.buildinfo
+ dpkg-genchanges -sa --build=source -O../linuxpathmanager_1.0-1ubuntu3_source.changes
+dpkg-genchanges: info: inclusion du code source original dans l'envoi (« upload »)
+ dpkg-source --after-build .
+dpkg-buildpackage: info: envoi de source uniquement : paquet Debian natif
+Now running lintian linuxpathmanager_1.0-1ubuntu3_source.changes ...
+E: linuxpathmanager source: malformed-debian-changelog-version 1.0-1ubuntu3 (for native) [debian/changelog:1]
+W: linuxpathmanager source: debhelper-but-no-misc-depends linuxpathmanager
+W: linuxpathmanager source: missing-debian-source-format
+W: linuxpathmanager source: no-newline-at-end [debian/control]
+W: linuxpathmanager source: no-newline-at-end [debian/rules]
+W: linuxpathmanager source: odd-historical-debian-changelog-version 1.0-1ubuntu2 (for native) [debian/changelog:7]
+W: linuxpathmanager source: syntax-error-in-dep5-copyright Continuation line not in paragraph (line 17). Missing a dot on the previous line? [debian/copyright]
+Finished running lintian.
+Now signing changes and any dsc files...
+long key IDs are discouraged; please use key fingerprints instead
+ signfile dsc linuxpathmanager_1.0-1ubuntu3.dsc 6D67A32F0F98565E
+
+ fixup_buildinfo linuxpathmanager_1.0-1ubuntu3.dsc linuxpathmanager_1.0-1ubuntu3_source.buildinfo
+ signfile buildinfo linuxpathmanager_1.0-1ubuntu3_source.buildinfo 6D67A32F0F98565E
+
+ fixup_changes dsc linuxpathmanager_1.0-1ubuntu3.dsc linuxpathmanager_1.0-1ubuntu3_source.changes
+ fixup_changes buildinfo linuxpathmanager_1.0-1ubuntu3_source.buildinfo linuxpathmanager_1.0-1ubuntu3_source.changes
+ signfile changes linuxpathmanager_1.0-1ubuntu3_source.changes 6D67A32F0F98565E
+
+Successfully signed dsc, buildinfo, changes files
