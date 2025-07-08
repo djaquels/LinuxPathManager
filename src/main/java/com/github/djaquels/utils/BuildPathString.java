@@ -1,6 +1,7 @@
 package com.github.djaquels.utils;
 
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,29 @@ public  final   class BuildPathString {
             client = new BuildPathString();
         }
         return client;
+    }
+
+	public static List<String> filterIncompleteSubstrings(List<String> strings, List<String> filters) {
+        List<String> result = new ArrayList<>();
+
+        for (String str : strings) {
+            boolean isIncompleteSubstring = false;
+
+            // Vérifie si la chaîne est une sous-chaîne incomplète de l'une des chaînes de filtrage
+            for (String filter : filters) {
+                if (filter.contains(str) && !filter.equals(str) && !filters.contains(str)) {
+                    isIncompleteSubstring = true;
+                    break;
+                }
+            }
+
+            // Si ce n'est pas une sous-chaîne incomplète, ajoute à la liste résultat
+            if (!isIncompleteSubstring) {
+                result.add(str);
+            }
+        }
+
+        return result;
     }
 
     public  String buildPathString(String currentPath, String newPath, String shell) {

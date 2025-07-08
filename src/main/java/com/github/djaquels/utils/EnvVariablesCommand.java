@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.io.File;
+import java.util.regex.Pattern;
 
 public class EnvVariablesCommand implements PathCommand {
 
@@ -91,9 +92,15 @@ public class EnvVariablesCommand implements PathCommand {
             Map<String, String> envVars = System.getenv();
             result = new ArrayList<>();
             for (Map.Entry<String, String> entry : envVars.entrySet()) {
+                if(entry.getKey().equals("PATH")){
+                    continue;
+                }
                 result.add(entry.getKey() + "=" + entry.getValue());
             }
         }
+        //filter PATH from env vars
+        String regex = "^export([\\s]*)PATH.*$";
+        result.removeIf(item -> Pattern.matches(regex, item));
         Collections.sort(result);
     }
 
