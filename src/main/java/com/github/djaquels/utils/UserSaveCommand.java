@@ -15,27 +15,6 @@ import java.util.ArrayList;
 public class UserSaveCommand implements SavePathCommand {
     private BuildPathString pathClient = BuildPathString.getBuildPathClient();
 
-	public static void removeAfterSecondOccurrence(List<String> lines, String filter) {
-        // Liste pour stocker les indices des occurrences du filtre
-        List<Integer> indices = new ArrayList<>();
-
-        // Parcourir la liste pour trouver les indices des occurrences du filtre
-        for (int i = 0; i < lines.size(); i++) {
-            if (lines.get(i).equals(filter)) {
-                indices.add(i);
-                if (indices.size() == 2) {
-                    break; // On a trouvé les deux premières occurrences
-                }
-            }
-        }
-
-        // Si deux occurrences sont trouvées, supprimer les lignes après la deuxième occurrence
-        int lastIndexToKeep = indices.get(0);
-        // Supprimer toutes les lignes après le deuxième indice
-        lines.subList(lastIndexToKeep + 1, lines.size()).clear();
-        
-    }
-
     @Override
     public void update(String newPath) throws IOException, InterruptedException {
 		Map<String, String> shellFiles = Map.of(
@@ -128,7 +107,6 @@ public class UserSaveCommand implements SavePathCommand {
 						}
 						return false;
 					});
-					removeAfterSecondOccurrence(cleanLines, endMarkerEnvs);
 					Files.write(bashrcPath, cleanLines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
 				} catch (IOException e) {
         			e.printStackTrace();
