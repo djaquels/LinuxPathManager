@@ -11,6 +11,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
+
 
 public class EnvVariableSaver implements SavePathCommand {
     private String formatEnvVar(String shell, String key, String value) {
@@ -28,6 +30,13 @@ public class EnvVariableSaver implements SavePathCommand {
                 throw new IllegalArgumentException("Unsupported shell: " + shell);
         }
     }
+	private boolean validPathValue(String value) {
+		String regex = ".*[;=\\[\\]\\.].*";
+        // Vérifie si la chaîne contient des caractères interdits
+        return !Pattern.matches(regex, value);
+	}
+
+	
 
     @Override
     public void execute(ObservableList<String> valuesList) {
@@ -56,9 +65,12 @@ public class EnvVariableSaver implements SavePathCommand {
     		if (Files.exists(path)) {
 				String shellName = entry.getKey();
 				Path bashrcPath = Paths.get(homeDir, shellConfigFile);
+				List<String> newLines;
+				System.out.println("============" + shellName + "============");
 				try {
 					List<String> lines = Files.readAllLines(bashrcPath, StandardCharsets.UTF_8);
-					List<String> newLines = new ArrayList<>();
+					newLines = new ArrayList<>();
+					List<String> pathLines= new ArrayList<>();
 					String startMarker = "#BEGIN LinuxPathManagerENVS";
 					String endMarker = "#END LinuxPathManagerENVS";
 					boolean inMarker = false;
@@ -72,26 +84,43 @@ public class EnvVariableSaver implements SavePathCommand {
 							continue;
 						}
 	    				if(!inMarker){
-						newLines.add(line);		
+							newLines.add(line);		
 	    				}
 					}
 					// add new PATH entry
-					newLines.add(startMarker);
+					pathLines.add(startMarker);
 					for(String envVar: valuesList){
                         String[] envString = envVar.split("=");
                         String envKey = envString[0];
                         String envValue = envString.length == 2? envString[1]: "";
                         String separator = shellFilters.get(shellName)[1];
                         String command = shellFilters.get(shellName)[0];
-                        newLines.add(command+envKey + separator + envValue);
+						if(envKey.equals("PATH") || !validPathValue(envValue)){
+							continue;
+						}
+                        pathLines.add(command+envKey + separator + envValue);
                     }
-					newLines.add(endMarker);
+					pathLines.add(endMarker);
+					pathLines.removeIf(item -> item.equals("END LinuxPathManagerENVS"));
+					pathLines.removeIf(item -> item.equals("END LinuxPathManager"));
+					newLines.removeIf(item -> item.equals("END LinuxPathManagerENVS"));
+					newLines.removeIf(item -> item.equals("END LinuxPathManager"));
+					pathLines.removeIf(item -> {
+						return !item.contains("export") && !item.contains("#") && !item.contains("set") && !item.contains("setenv");
+					});
+					newLines.addAll(pathLines);
 					Files.write(bashrcPath, newLines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
     			} catch (IOException e) {
         			e.printStackTrace();
+					newLines = new ArrayList<>();
 				    throw new IOException("Error writing to .env file", e);
     			}
     		}
+		}
+
+		for (Map.Entry<String, String> entry : shellFiles.entrySet()) {
+			String shellConfigFile = entry.getValue();
+			StringUtils.fixFile(shellConfigFile);
 		}
         }catch (IOException e) {
 	        e.printStackTrace();

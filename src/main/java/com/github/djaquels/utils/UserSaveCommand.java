@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class UserSaveCommand implements SavePathCommand {
     private BuildPathString pathClient = BuildPathString.getBuildPathClient();
+
     @Override
     public void update(String newPath) throws IOException, InterruptedException {
 		Map<String, String> shellFiles = Map.of(
@@ -41,13 +42,27 @@ public class UserSaveCommand implements SavePathCommand {
 				String shellName = entry.getKey();
 				Path bashrcPath = Paths.get(homeDir, shellConfigFile);
 				String currentPath = "";
+				List<String> newLines = new ArrayList<>();
+				List<String> newLinesEnvs = new ArrayList<>(); 
 				try {
 					List<String> lines = Files.readAllLines(bashrcPath, StandardCharsets.UTF_8);
-					List<String> newLines = new ArrayList<>();
+					newLines = new ArrayList<>();
+					newLinesEnvs = new ArrayList<>(); 
 					String startMarker = "#BEGIN LinuxPathManager";
 					String endMarker = "#END LinuxPathManager";
+					String startMarkerEnvs = "#BEGIN LinuxPathManagerENVS";
+					String endMarkerEnvs = "#END LinuxPathManagerENVS";
 					boolean inMarker = false;
+					boolean inEnvsMarker = false;
 					for(String line: lines){
+						if(line.trim().equals(startMarkerEnvs)){
+							inEnvsMarker = true;
+						}
+						if(line.trim().equals(endMarkerEnvs)){
+							inEnvsMarker = false;
+							newLinesEnvs.add(endMarkerEnvs);
+							continue;
+						}
 						if(line.trim().equals(startMarker)){
 							inMarker = true;
 							continue;
@@ -59,21 +74,53 @@ public class UserSaveCommand implements SavePathCommand {
 						if(inMarker){
 						currentPath += line.trim();
 						}
-	    				        if(!inMarker){
-							newLines.add(line);		
-	    				        }
+	    				if(!inMarker){
+							if(inEnvsMarker){
+								newLinesEnvs.add(line);
+							}else{
+								newLines.add(line);		
+							}
+	    				}
 					}
 					// add new PATH entry
 					String newPathEntry = pathClient.buildPathString(currentPath,newPath, shellName);
 					newLines.add(startMarker);
 					newLines.add(newPathEntry.trim());
 					newLines.add(endMarker);
-					Files.write(bashrcPath, newLines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
-    			} catch (IOException e) {
+					newLinesEnvs.removeIf(item -> {
+						return !item.contains("export") && !item.contains("#") && !item.contains("set") && !item.contains("setenv");
+					});
+					newLines.addAll(newLinesEnvs);
+					List<String> filters = new ArrayList<>();
+					filters.add(startMarker);
+					filters.add(startMarkerEnvs);
+					filters.add(endMarker);
+					filters.add(endMarkerEnvs);
+					List<String> cleanLines = BuildPathString.filterIncompleteSubstrings(newLines, filters);
+					cleanLines.removeIf(item -> {
+						String f = "END LinuxPathManagerENVS";
+						for(int i=0; i <= f.length(); i++){
+							String substring = f.substring(i,f.length());
+							if(item.equals(substring)){
+								return true;
+							}
+						}
+						return false;
+					});
+					Files.write(bashrcPath, cleanLines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
+				} catch (IOException e) {
         			e.printStackTrace();
-				throw new IOException("Error writing to .bashrc file", e);
+					newLines = new ArrayList<>();
+					newLinesEnvs = new ArrayList<>(); 
+					throw new IOException("Error writing to .bashrc file", e);
     			}
     		}
+		}
+
+		for (Map.Entry<String, String> entry : shellFiles.entrySet()) {
+			String shellConfigFile = entry.getValue();
+			StringUtils.fixFile(shellConfigFile);
+			
 		}
 	}
 

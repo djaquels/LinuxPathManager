@@ -101,6 +101,7 @@ public class UserPathCommand implements PathCommand {
     @Override
     public List<String> getResult(){
         this.execute();
+        Collections.sort(pathValues);
         return pathValues;
     }
 
