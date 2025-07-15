@@ -11,6 +11,7 @@
 .menu:hover,
 .menu-item:hover {
     -fx-background-color: #f7f7f7; /* No hover background */
+    -fx-text-fill: #000000; /* Neon green text */
 }
 
 
