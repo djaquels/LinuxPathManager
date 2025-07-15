@@ -116,7 +116,7 @@ public class App extends Application {
 	    systemPathMD5 = StringUtils.getMD5(String.join(":", systemPathList));
         // Main layout
         VBox layout = new VBox(10);
-        layout.setPadding(new Insets(20));
+        layout.setPadding(new Insets(0, 20, 10, 20));
         layout.setSpacing(15);
 
         Scene scene = new Scene(layout, 750, 350);

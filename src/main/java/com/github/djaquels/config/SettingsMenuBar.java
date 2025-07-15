@@ -38,7 +38,7 @@ public class SettingsMenuBar extends MenuBar {
         config = loadConfig();
 
         // Create settings menu
-        Menu settingsMenu = new Menu("Settings");
+        Menu settingsMenu = new Menu(":");
 
         // Theme selector
         Menu themeMenu = new Menu("Select Theme");
