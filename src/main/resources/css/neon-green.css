@@ -42,6 +42,11 @@
     -fx-border-radius: 8px;
 }
 
+/* Remove hover color from menu bar items */
+.menu:hover,
+.menu-item:hover {
+    -fx-background-color: transparent; /* No hover background */
+}
 
 
 

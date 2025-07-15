@@ -7,6 +7,13 @@
     -fx-text-alignment: right;   /* For text inside label */
 }
 
+/* Remove hover color from menu bar items */
+.menu:hover,
+.menu-item:hover {
+    -fx-background-color: #f7f7f7; /* No hover background */
+}
+
+
 .root {
     -fx-background-color: #f7f7f7; /* Dark background */
     -fx-text-fill: #000000; /* Neon green text */
