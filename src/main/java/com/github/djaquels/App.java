@@ -1,5 +1,6 @@
 package com.github.djaquels;
 
+import com.github.djaquels.config.SettingsMenuBar;
 import com.github.djaquels.ui.Labels;
 import com.github.djaquels.utils.GlobalPathCommand;
 import com.github.djaquels.utils.GlobalRemotePathCommand;
@@ -43,6 +44,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
@@ -73,6 +75,8 @@ public class App extends Application {
     private String remoteUsername;
     private String remotePassword;
     private int remotePort;
+    // Themes
+    private SettingsMenuBar menuBar;
 
     private void updatePath(PathCommand command, ObservableList<String> pathList) {
         invoker.setCommand(command);
@@ -110,6 +114,13 @@ public class App extends Application {
         userPathAsString = String.join(":", userPathList);
         userPathMD5 = StringUtils.getMD5(userPathAsString);
 	    systemPathMD5 = StringUtils.getMD5(String.join(":", systemPathList));
+        // Main layout
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(20));
+        layout.setSpacing(15);
+
+        Scene scene = new Scene(layout, 750, 350);
+        this.menuBar = new SettingsMenuBar(scene);
         /*
          * Controll panel buttons
          * Add new to PATH
@@ -149,10 +160,11 @@ public class App extends Application {
         // Env Vars Window
         Button toEnvVars = new Button(mainWindow.getString("to-env"));
         toEnvVars.setOnAction(e -> {
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
         PathCommand cmd = (remoteModeActive)? new RemoteEnvVariablesCommand(remoteUsername, remoteHost, remotePort, remotePassword) : new EnvVariablesCommand();    
         SavePathCommand saveCMD = (remoteModeActive)? new RemoteEnvVariableSaver(remoteUsername, remoteHost, remotePort, remotePassword): new EnvVariableSaver();
-        EnvVars envWindow = new EnvVars(cmd, saveCMD, remoteModeActive);
-            envWindow.showWindow(primaryStage);
+        EnvVars envWindow = new EnvVars(cmd, saveCMD, remoteModeActive, csstheme);
+        envWindow.showWindow(primaryStage);
         });
         // Save
         Button saveButton = new Button(mainWindow.getString("save"));
@@ -165,10 +177,9 @@ public class App extends Application {
         HBox buttonBox = new HBox(10); // 10 är mellanrummet mellan knapparna
         buttonBox.getChildren().addAll(addButton, updateButton, deleButton, saveButton, toEnvVars, sshButton);
 
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll(userPathLabel, userListView, systemPathLabel, systemListView, remoteModeLabel, pathField, buttonBox);
+    
 
-        Scene scene = new Scene(layout, 750, 350);
+        layout.getChildren().addAll(menuBar,userPathLabel, userListView, systemPathLabel, systemListView, remoteModeLabel, pathField, buttonBox);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

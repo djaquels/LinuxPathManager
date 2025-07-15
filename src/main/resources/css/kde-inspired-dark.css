@@ -1,0 +1,158 @@
+.menu-bar {
+    -fx-background-color: #232629; /* Dark header bar */
+    -fx-text-fill: #eff0f1;
+    -fx-padding: 5 10;
+    -fx-border-color: #232629;
+    -fx-border-width: 0 0 1 0; /* Bottom border only */
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+}
+
+/* KDE Dark Theme */
+.menu-item {
+    -fx-text-fill: #ecf0f1; /* light text */
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(41, 128, 185, 0.3); /* KDE blue highlight */
+    -fx-text-fill: #5dade2; /* KDE light blue accent */
+}
+
+.radio-menu-item:selected,
+.menu-item:selected {
+    -fx-background-color: rgba(41, 128, 185, 0.5);
+    -fx-text-fill: #5dade2;
+}
+
+/* Menu popup */
+.context-menu {
+    -fx-background-color: #2c3e50; /* KDE dark background */
+    -fx-border-color: #34495e;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+
+/* === Root Scene Background === */
+.root {
+    -fx-background-color: #232629; /* Breeze Dark background */
+    -fx-text-fill: #eff0f1;        /* Light text */
+    -fx-font-family: "Noto Sans", sans-serif;
+}
+
+/* === Buttons === */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #3daee9, #2980b9); /* Breeze blue gradient */
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5;
+    -fx-padding: 6 12;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #2980b9, #1e5d8b);
+}
+
+.button:pressed {
+    -fx-background-color: #1e5d8b;
+}
+
+/* === Text Fields === */
+.text-field {
+    -fx-background-color: #31363b; /* Slightly lighter for fields */
+    -fx-text-fill: #eff0f1;
+    -fx-border-color: #4d5358;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-padding: 4 8;
+}
+
+.text-field:focused {
+    -fx-border-color: #3daee9; /* Breeze blue highlight */
+}
+
+/* === Labels === */
+.label {
+    -fx-text-fill: #eff0f1;
+    -fx-font-size: 13px;
+}
+
+/* === ListView === */
+.list-view {
+    -fx-background-color: #232629;
+    -fx-control-inner-background: #232629;
+    -fx-border-color: #4d5358;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.2, 0, 1);
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #eff0f1;
+    -fx-padding: 5 10;
+    -fx-font-size: 13px;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: linear-gradient(to bottom, #3daee9, #2980b9);
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 4;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: rgba(61, 174, 233, 0.2);
+    -fx-cursor: hand;
+}
+
+/* === ScrollBar === */
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: #2b2f33; /* Dark track background */
+    -fx-padding: 2;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: linear-gradient(to bottom, #3daee9, #2980b9);
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(61, 174, 233, 0.5), 6, 0.4, 0, 0);
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: linear-gradient(to bottom, #2980b9, #1e5d8b);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+}
+
+/* === MenuBar === */
+.menu-bar {
+    -fx-background-color: #31363b;
+    -fx-text-fill: #eff0f1;
+}
+
+.menu {
+    -fx-text-fill: #eff0f1;
+}
+
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #eff0f1;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(61, 174, 233, 0.3);
+    -fx-cursor: hand;
+}

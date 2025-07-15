@@ -23,12 +23,14 @@ public class EnvVars  {
     // Remote controlers
     private Label remoteModeLabel;
     private Boolean remoteModeActive;
+    private String theme;
 
-    public EnvVars(PathCommand envVarsCommand, SavePathCommand envVarsSaveCommand, Boolean isRemote) {
+    public EnvVars(PathCommand envVarsCommand, SavePathCommand envVarsSaveCommand, Boolean isRemote, String theme) {
         this.remoteModeActive = isRemote;
         this.envVarsCommand = envVarsCommand;
         this.conf = LanguageUtils.getWindowConfs();
         this.saveCommand = envVarsSaveCommand;
+        this.theme = theme;
     }
 
     public void showWindow(Stage parentStage) {
@@ -108,7 +110,9 @@ public class EnvVars  {
         dialog.initOwner(parentStage);
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle(mainWindow.getString("success-message"));
-        dialog.setScene(new Scene(layout, 600, 400));
+        Scene scene = new Scene(layout, 600, 300);
+        scene.getStylesheets().add(getClass().getResource(this.theme).toExternalForm());
+        dialog.setScene(scene);
         dialog.showAndWait();
     }
 

@@ -1,0 +1,13 @@
+.menu-bar {
+    -fx-background-color: #f7f7f7; /* Dark background */
+    -fx-text-fill: #000000; /* Neon green text */
+    -fx-padding: 0 0;
+    -fx-border-width: 0 0 0 0; /* Bottom border only */
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+}
+
+.root {
+    -fx-background-color: #f7f7f7; /* Dark background */
+    -fx-text-fill: #000000; /* Neon green text */
+}

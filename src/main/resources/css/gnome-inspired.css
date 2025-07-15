@@ -1,0 +1,121 @@
+.menu-bar {
+    -fx-background-color: #f6f5f4; /* Dark header bar */
+    -fx-text-fill: #2e3436;
+    -fx-padding: 5 10;
+    -fx-border-color: #f6f5f4;
+    -fx-border-width: 0 0 1 0; /* Bottom border only */
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+}
+
+/* GNOME Light Theme */
+.menu-item {
+    -fx-text-fill: #333; /* dark text */
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(0, 122, 204, 0.15); /* soft blue hover */
+    -fx-text-fill: #007acc; /* GNOME blue accent */
+}
+
+.radio-menu-item:selected,
+.menu-item:selected {
+    -fx-background-color: rgba(0, 122, 204, 0.3);
+    -fx-text-fill: #007acc;
+}
+
+/* Menu popup */
+.context-menu {
+    -fx-background-color: #f2f2f2; /* GNOME light background */
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+
+.root {
+    -fx-background-color: #f6f5f4;
+    -fx-text-fill: #2e3436;
+    -fx-font-family: "Cantarell", sans-serif;
+}
+
+.button {
+    -fx-background-color: #3584e4;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 4;
+    -fx-padding: 6 12;
+}
+
+.button:hover {
+    -fx-background-color: #1c71d8;
+}
+
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #2e3436;
+    -fx-border-color: #c0bfbc;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+}
+
+/* ListView Styling */
+.list-view {
+    -fx-background-color: #ffffff; /* Light background */
+    -fx-control-inner-background: #ffffff;
+    -fx-background-insets: 0;
+    -fx-padding: 5;
+    -fx-border-color: #c0bfbc;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #2e3436; /* Dark text */
+    -fx-padding: 5 10;
+    -fx-font-size: 14px;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #3584e4; /* GNOME blue for selection */
+    -fx-text-fill: #ffffff;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: rgba(53, 132, 228, 0.1); /* Subtle hover effect */
+    -fx-cursor: hand;
+}
+
+/* ScrollBar Styling */
+.scroll-bar:vertical {
+    -fx-background-color: #f6f5f4; /* Slightly gray track background */
+    -fx-padding: 2;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: #f6f5f4;
+    -fx-padding: 2;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #c0bfbc;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #3584e4; /* GNOME blue on hover */
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+}
