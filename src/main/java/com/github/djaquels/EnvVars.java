@@ -7,6 +7,7 @@ import com.github.djaquels.utils.SavePathCommand;
 import org.json.JSONObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -105,12 +106,12 @@ public class EnvVars  {
 
         HBox inputBox = new HBox(5, keyField, valueField, addButton, updateButton, deleteButton, saveButton);
         VBox layout = new VBox(10, listView, inputBox, remoteModeLabel);
-
+        layout.setPadding(new Insets(5, 10, 5, 10));
         Stage dialog = new Stage();
         dialog.initOwner(parentStage);
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle(mainWindow.getString("success-message"));
-        Scene scene = new Scene(layout, 600, 300);
+        Scene scene = new Scene(layout, 650, 350);
         scene.getStylesheets().add(getClass().getResource(this.theme).toExternalForm());
         dialog.setScene(scene);
         dialog.showAndWait();

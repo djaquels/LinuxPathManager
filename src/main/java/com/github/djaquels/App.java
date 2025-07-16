@@ -116,7 +116,7 @@ public class App extends Application {
 	    systemPathMD5 = StringUtils.getMD5(String.join(":", systemPathList));
         // Main layout
         VBox layout = new VBox(10);
-        layout.setPadding(new Insets(0, 20, 10, 20));
+        layout.setPadding(new Insets(5, 10, 20, 10));
         layout.setSpacing(15);
 
         Scene scene = new Scene(layout, 750, 350);
@@ -199,7 +199,12 @@ public class App extends Application {
                 ButtonBar.ButtonData.CANCEL_CLOSE);
 
         alert.getButtonTypes().setAll(userButton, systemButton, cancelButton);
-
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        alert.getDialogPane().getStylesheets().clear();
+        alert.getDialogPane().getStylesheets().add(
+        getClass().getResource(csstheme).toExternalForm()
+        );
+        alert.getDialogPane().getStyleClass().add("custom-dialog");
         alert.showAndWait().ifPresent(result -> {
             if (result == userButton) {
                 addPathToList(userPathList, newPath);
@@ -283,7 +288,7 @@ public class App extends Application {
     }
     
     private String promptForSudoPassword(){
-        Labels conf = getWindowConfs();
+    Labels conf = getWindowConfs();
 	JSONObject saveWindow = conf.getWindowLabels("save");
 	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 	alert.setTitle(saveWindow.getString("title"));
@@ -295,7 +300,11 @@ public class App extends Application {
 	VBox dialogPaneContent = new VBox(10);
 	dialogPaneContent.getChildren().add(passwordField);
 	alert.getDialogPane().setContent(dialogPaneContent);
-
+    String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        alert.getDialogPane().getStylesheets().clear();
+        alert.getDialogPane().getStylesheets().add(
+        getClass().getResource(csstheme).toExternalForm()
+        );
 	Optional<ButtonType> result = alert.showAndWait();
 	if (result.isPresent() && result.get() == ButtonType.OK) {
 	    return passwordField.getText();
@@ -313,6 +322,11 @@ public class App extends Application {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        alert.getDialogPane().getStylesheets().clear();
+        alert.getDialogPane().getStylesheets().add(
+        getClass().getResource(csstheme).toExternalForm()
+        );
         alert.setContentText(content);
         alert.showAndWait();
     }
@@ -322,6 +336,11 @@ public class App extends Application {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        alert.getDialogPane().getStylesheets().clear();
+        alert.getDialogPane().getStylesheets().add(
+        getClass().getResource(csstheme).toExternalForm()
+        );
         alert.showAndWait();
     }
 
@@ -330,6 +349,12 @@ public class App extends Application {
         alert.setTitle(window.getString("title"));
         alert.setHeaderText(window.getString("header"));
         alert.setContentText(window.getString("confirm-label") + itemValue);
+        // Apply custom theme
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        alert.getDialogPane().getStylesheets().clear();
+        alert.getDialogPane().getStylesheets().add(
+        getClass().getResource(csstheme).toExternalForm()
+        );        
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
@@ -427,6 +452,8 @@ public class App extends Application {
         grid.add(statusLabel, 1, 5);
 
         Scene dialogScene = new Scene(grid, 350, 250);
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        dialogScene.getStylesheets().add(getClass().getResource(csstheme).toExternalForm());
         dialog.setScene(dialogScene);
         dialog.showAndWait();
     }

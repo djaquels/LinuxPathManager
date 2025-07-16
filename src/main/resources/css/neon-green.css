@@ -1,3 +1,6 @@
+.menu {
+    -fx-background-color: transparent; 
+}
 .menu-bar {
     -fx-background-color: #0d0d0d; /* Dark header bar */
     -fx-text-fill: #39ff14;
@@ -6,6 +9,7 @@
     -fx-border-width: 0 0 0 0; /* Bottom border only */
     -fx-alignment: center-right; /* For container alignment */
     -fx-text-alignment: right;   /* For text inside label */
+    -fx-font-size: 15px;
 }
 
 /* Neon green text and transparent background for all menu items */
@@ -157,4 +161,25 @@
 /* Optional glow for entire ListView container */
 .list-view {
     -fx-effect: dropshadow(gaussian, #39ff14, 15, 0.4, 0, 0);
+}
+/*Alerts omg*/
+.dialog-pane {
+    -fx-background-color: linear-gradient(to bottom, #101010, #202020);
+    -fx-background-radius: 8;
+    -fx-border-color: #39ff14;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: #39ff14;
+}
+
+.dialog-pane .button {
+    -fx-background-color: #39ff14;
+    -fx-text-fill: #101010;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #66ff66;
 }

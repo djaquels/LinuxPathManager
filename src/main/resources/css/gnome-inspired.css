@@ -1,3 +1,8 @@
+
+.menu {
+    -fx-text-fill: #2e3436;
+}
+
 .menu-bar {
     -fx-background-color: #f6f5f4; /* Dark header bar */
     -fx-text-fill: #2e3436;
@@ -6,6 +11,7 @@
     -fx-border-width: 0 0 1 0; /* Bottom border only */
     -fx-alignment: center-right; /* For container alignment */
     -fx-text-alignment: right;   /* For text inside label */
+    -fx-font-size: 15px;
 }
 
 /* GNOME Light Theme */

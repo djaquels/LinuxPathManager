@@ -1,11 +1,16 @@
+.menu {
+    -fx-text-fill: #eff0f1;
+}
+
 .menu-bar {
-    -fx-background-color: #232629; /* Dark header bar */
+    -fx-background-color: transparent; /* Dark header bar */
     -fx-text-fill: #eff0f1;
     -fx-padding: 5 10;
     -fx-border-color: #232629;
     -fx-border-width: 0 0 1 0; /* Bottom border only */
     -fx-alignment: center-right; /* For container alignment */
     -fx-text-alignment: right;   /* For text inside label */
+    -fx-font-size: 15px;
 }
 
 /* KDE Dark Theme */
@@ -135,24 +140,4 @@
 .scroll-bar .increment-arrow,
 .scroll-bar .decrement-arrow {
     -fx-shape: " ";
-}
-
-/* === MenuBar === */
-.menu-bar {
-    -fx-background-color: #31363b;
-    -fx-text-fill: #eff0f1;
-}
-
-.menu {
-    -fx-text-fill: #eff0f1;
-}
-
-.menu-item {
-    -fx-background-color: transparent;
-    -fx-text-fill: #eff0f1;
-}
-
-.menu-item:hover {
-    -fx-background-color: rgba(61, 174, 233, 0.3);
-    -fx-cursor: hand;
 }
