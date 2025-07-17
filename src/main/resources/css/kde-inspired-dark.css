@@ -141,3 +141,41 @@
 .scroll-bar .decrement-arrow {
     -fx-shape: " ";
 }
+
+/* KDE Breeze Dark Dialog Styling */
+.dialog-pane {
+    -fx-background-color: #232629;
+    -fx-border-color: #4d4d4d;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #31363b;
+    -fx-border-color: #4d4d4d;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10px;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: #c8c8c8;
+    -fx-font-size: 13px;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-color: #5294e2;
+    -fx-text-fill: #232629;
+    -fx-background-radius: 5;
+    -fx-padding: 5 15;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #3572b0;
+}

@@ -1,0 +1,11 @@
+{
+    "theme": "default",
+    "enabledShells": {
+        "bash": true,
+        "zsh": true,
+        "fish": true,
+        "ksh": true,
+        "csh": true,
+        "tcsh": true
+    }
+}

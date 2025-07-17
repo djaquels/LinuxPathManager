@@ -101,6 +101,10 @@ public class EnvVars  {
             alert.setTitle(mainWindow.getString("success"));
             alert.setHeaderText(null);
             alert.setContentText(mainWindow.getString("success-message"));
+            alert.getDialogPane().getStylesheets().clear();
+            alert.getDialogPane().getStylesheets().add(
+            getClass().getResource(this.theme).toExternalForm()
+            );
             alert.showAndWait();
         });
 

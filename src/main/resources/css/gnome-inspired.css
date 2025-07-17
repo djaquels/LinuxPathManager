@@ -125,3 +125,41 @@
 .scroll-bar .decrement-arrow {
     -fx-shape: " ";
 }
+
+/* GNOME Light Dialog Styling */
+.dialog-pane {
+    -fx-background-color: #f7f7f7;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10px;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: #444444;
+    -fx-font-size: 13px;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-color: #007acc;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 4;
+    -fx-padding: 5 15;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #005fa3;
+}

@@ -162,24 +162,49 @@
 .list-view {
     -fx-effect: dropshadow(gaussian, #39ff14, 15, 0.4, 0, 0);
 }
-/*Alerts omg*/
+
+/* Reset dialog pane defaults */
 .dialog-pane {
-    -fx-background-color: linear-gradient(to bottom, #101010, #202020);
-    -fx-background-radius: 8;
+    -fx-background-color: #101010; /* Neon background */
     -fx-border-color: #39ff14;
-    -fx-border-width: 2;
-    -fx-border-radius: 8;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
 }
 
-.dialog-pane .label {
-    -fx-text-fill: #39ff14;
+/* Style header panel */
+.dialog-pane .header-panel {
+    -fx-background-color: #101010;
+    -fx-border-color: #39ff14;
+    -fx-border-width: 0 0 1 0; /* bottom border */
+    -fx-padding: 10px;
 }
 
-.dialog-pane .button {
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #39ff14; /* Neon green text */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Style content label */
+.dialog-pane .content.label {
+    -fx-text-fill: #39ff14; /* Neon text */
+    -fx-font-size: 13px;
+}
+
+/* Style buttons */
+.dialog-pane .button-bar .button {
     -fx-background-color: #39ff14;
     -fx-text-fill: #101010;
+    -fx-background-radius: 6;
+    -fx-padding: 5 10;
 }
 
-.dialog-pane .button:hover {
+.dialog-pane .button-bar .button:hover {
     -fx-background-color: #66ff66;
+}
+
+/* Style icons like ? button */
+.dialog-pane .graphic-container {
+    -fx-background-color: transparent;
 }
