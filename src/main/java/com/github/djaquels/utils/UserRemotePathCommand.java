@@ -24,17 +24,10 @@ public class UserRemotePathCommand implements PathCommand {
 
     @Override
     public void execute() {
-        JSch jsch = new JSch();
         Session session = null;
         ChannelExec channel = null;
         try {
-            session = jsch.getSession(username, host, port);
-            if (password != null) {
-                session.setPassword(password);
-            }
-            session.setConfig("StrictHostKeyChecking", "no"); // For testing only, not recommended for production
-            session.connect(5000);
-
+            session = SSHConnectionUtil.connect(this.username, this.host, this.port, this.password);
             channel = (ChannelExec) session.openChannel("exec");
             channel.setCommand("echo $PATH");
             channel.setInputStream(null);

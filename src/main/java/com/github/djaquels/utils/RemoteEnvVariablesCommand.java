@@ -28,12 +28,7 @@ public class RemoteEnvVariablesCommand implements PathCommand {
         Session session = null;
         ChannelExec channel = null;
         try {
-            JSch jsch = new JSch();
-            session = jsch.getSession(username, host, port);
-            if (password != null) session.setPassword(password);
-            session.setConfig("StrictHostKeyChecking", "no");
-            session.connect(5000);
-
+            session = SSHConnectionUtil.connect(this.username, this.host, this.port, this.password);
             channel = (ChannelExec) session.openChannel("exec");
             channel.setCommand("printenv");
             channel.setInputStream(null);

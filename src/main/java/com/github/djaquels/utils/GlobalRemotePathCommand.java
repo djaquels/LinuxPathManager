@@ -1,6 +1,7 @@
 package com.github.djaquels.utils;
 
-import com.jcraft.jsch.*;
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.Session;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -24,17 +25,10 @@ public class GlobalRemotePathCommand implements PathCommand {
 
     @Override
     public void execute() {
-        JSch jsch = new JSch();
-        Session session = null;
         ChannelExec channel = null;
+        Session session = null;
         try {
-            session = jsch.getSession(username, host, port);
-            if (password != null) {
-                session.setPassword(password);
-            }
-            session.setConfig("StrictHostKeyChecking", "no");
-            session.connect(5000);
-
+            session = SSHConnectionUtil.connect(this.username, this.host, this.port, this.password);
             // Try to cat the custom profile file
             String[] pathLines = tryReadRemoteFile(session, "/etc/profile.d/linuxpathmanager.sh");
             if (pathLines != null) {
@@ -62,7 +56,8 @@ public class GlobalRemotePathCommand implements PathCommand {
         } catch (Exception e) {
             e.printStackTrace();
             pathValues = Collections.emptyList();
-        } finally {
+        } 
+        finally {
             if (channel != null && channel.isConnected()) {
                 channel.disconnect();
             }

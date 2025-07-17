@@ -21,5 +21,6 @@ com/github/djaquels/utils/UserPathCommand.class
 com/github/djaquels/utils/SystemRemoteSaveCommand.class
 com/github/djaquels/utils/SystemSaveCommand.class
 com/github/djaquels/utils/RemoteEnvVariablesCommand.class
+com/github/djaquels/utils/SSHConnectionUtil.class
 com/github/djaquels/utils/RemoteUserSaveCommand.class
 com/github/djaquels/utils/ReadPathInvoker.class

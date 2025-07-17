@@ -16,6 +16,7 @@
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/RemoteEnvVariableSaver.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/RemoteEnvVariablesCommand.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/RemoteUserSaveCommand.java
+/home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/SSHConnectionUtil.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/SavePathCommand.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/StringUtils.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/SystemRemoteSaveCommand.java

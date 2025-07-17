@@ -20,12 +20,15 @@ public class RemoteEnvVariableSaver implements SavePathCommand {
     }
 
     private Session connect() throws JSchException {
-        JSch jsch = new JSch();
-        Session session = jsch.getSession(username, host, port);
-        if (password != null) session.setPassword(password);
-        session.setConfig("StrictHostKeyChecking", "no");
-        session.connect(5000);
-        return session;
+        
+        Session session = null;
+        try{
+            session = SSHConnectionUtil.connect(this.username, this.host, this.port, this.password);
+            return session;
+        }catch(Exception e){
+            throw new JSchException("SSH Authentication failed. Tried public-key and password. ");
+        }
+        
     }
 
     private List<String> readRemoteFile(Session session, String remotePath) throws Exception {
