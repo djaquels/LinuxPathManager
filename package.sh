@@ -16,8 +16,10 @@ cp exec linuxpathmanager/usr/bin/linuxpathmanager
 chmod +x linuxpathmanager/usr/bin/linuxpathmanager
 # kopiera .jar och iconer
 cp target/linux-path-gui-1.0-SNAPSHOT.jar linuxpathmanager/usr/share/linuxpathmanager/
-cp icon.png linuxpathmanager/usr/share/linuxpathmanager/  # Om du har en ikon
+cp icon.png linuxpathmanager/usr/share/linuxpathmanager/
+cp config.json linuxpathmanager/usr/share/linuxpathmanager/
+chmod 666 linuxpathmanager/usr/share/linuxpathmanager/config.json
 # desktop fil
 cp linuxpathmanager.desktop linuxpathmanager/usr/share/applications/linuxpathmanager.desktop
 # bygg .deb packet
-debuild -S -sa -k$KEY_ID
+cd linuuxpathmanager && debuild -S -sa -k$KEY_ID
