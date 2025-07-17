@@ -1,0 +1,164 @@
+.menu {
+    -fx-text-fill: #31363b;
+}
+.menu-bar {
+    -fx-background-color: transparent;
+    -fx-text-fill: #31363b;
+    -fx-padding: 5 10;
+    -fx-border-width: 0 0 0 0; /* Bottom border only */
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+    -fx-font-size: 15px;
+}
+
+/* KDE Light Theme */
+.menu-item {
+    -fx-text-fill: #2e3436; /* dark text */
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(41, 128, 185, 0.2); /* KDE blue hover */
+    -fx-text-fill: #2980b9; /* KDE accent */
+}
+
+.radio-menu-item:selected,
+.menu-item:selected {
+    -fx-background-color: rgba(41, 128, 185, 0.35);
+    -fx-text-fill: #2980b9;
+}
+
+/* Menu popup */
+.context-menu {
+    -fx-background-color: #ecf0f1; /* KDE light background */
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+.root {
+    -fx-background-color: linear-gradient(to bottom, #eff0f1, #fcfcfc);
+    -fx-text-fill: #31363b;
+    -fx-font-family: "Noto Sans", sans-serif;
+}
+
+.button {
+    -fx-background-color: linear-gradient(to bottom, #3daee9, #2980b9);
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 3;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #2980b9, #1e5d8b);
+}
+
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #31363b;
+    -fx-border-color: #bfc5c9;
+    -fx-border-width: 1;
+    -fx-background-radius: 3;
+}
+
+/* ListView Styling */
+.list-view {
+    -fx-background-color: linear-gradient(to bottom, #eff0f1, #fcfcfc); /* Breeze-like gradient */
+    -fx-control-inner-background: linear-gradient(to bottom, #eff0f1, #fcfcfc);
+    -fx-background-insets: 0;
+    -fx-padding: 5;
+    -fx-border-color: #bfc5c9;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.2, 0, 1);
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #31363b; /* Dark gray text for contrast */
+    -fx-padding: 5 10;
+    -fx-font-size: 14px;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: linear-gradient(to bottom, #3daee9, #2980b9); /* Breeze blue */
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 4;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: rgba(61, 174, 233, 0.2); /* Subtle hover highlight */
+    -fx-cursor: hand;
+}
+
+/* ScrollBar Styling */
+.scroll-bar:vertical {
+    -fx-background-color: linear-gradient(to bottom, #f0f0f0, #e5e5e5); /* Light gradient for track */
+    -fx-padding: 2;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: linear-gradient(to right, #f0f0f0, #e5e5e5);
+    -fx-padding: 2;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: linear-gradient(to bottom, #3daee9, #2980b9);
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(61, 174, 233, 0.5), 8, 0.5, 0, 0);
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: linear-gradient(to bottom, #2980b9, #1e5d8b);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+}
+
+/* KDE Breeze Light Dialog Styling */
+.dialog-pane {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10px;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #202020;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: #333333;
+    -fx-font-size: 13px;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-color: #3182ce;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5;
+    -fx-padding: 5 15;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #2b6cb0;
+}

@@ -14,17 +14,15 @@ import java.util.ArrayList;
 
 public class UserSaveCommand implements SavePathCommand {
     private BuildPathString pathClient = BuildPathString.getBuildPathClient();
+	private Map<String,String> shellFiles;
+
+	public UserSaveCommand(Map<String, String> shellFiles){
+		this.shellFiles = shellFiles;
+	}
 
     @Override
     public void update(String newPath) throws IOException, InterruptedException {
-		Map<String, String> shellFiles = Map.of(
-    	"bash", ".bashrc",
-    	"zsh", ".zshrc",
-    	"fish", ".config/fish/config.fish",
-    	"ksh", ".kshrc",
-		"csh", ".cshrc",
-		"tcsh", ".tcshrc"
-		);
+		Map<String, String> shellFiles = this.shellFiles;
 		Map<String, String> shellFilters = Map.of(
 			"bash", "export PATH=",
 			"zsh", "export PATH=",

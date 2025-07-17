@@ -8,6 +8,8 @@ com/github/djaquels/utils/EnvVariableSaver.class
 com/github/djaquels/utils/SavePathCommand.class
 com/github/djaquels/utils/LanguageUtils.class
 com/github/djaquels/utils/EnvVariablesCommand.class
+com/github/djaquels/config/SettingsMenuBar.class
+com/github/djaquels/config/Config.class
 com/github/djaquels/utils/BuildPathString.class
 com/github/djaquels/utils/UserSaveCommand.class
 com/github/djaquels/utils/PathCommandFactory.class
@@ -16,8 +18,8 @@ com/github/djaquels/utils/StringUtils.class
 com/github/djaquels/ui/Labels.class
 com/github/djaquels/utils/RemoteEnvVariableSaver.class
 com/github/djaquels/utils/UserPathCommand.class
-com/github/djaquels/utils/SystemSaveCommand.class
 com/github/djaquels/utils/SystemRemoteSaveCommand.class
+com/github/djaquels/utils/SystemSaveCommand.class
 com/github/djaquels/utils/RemoteEnvVariablesCommand.class
 com/github/djaquels/utils/RemoteUserSaveCommand.class
 com/github/djaquels/utils/ReadPathInvoker.class

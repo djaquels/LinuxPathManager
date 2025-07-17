@@ -1,0 +1,210 @@
+.menu {
+    -fx-background-color: transparent; 
+}
+.menu-bar {
+    -fx-background-color: #0d0d0d; /* Dark header bar */
+    -fx-text-fill: #39ff14;
+    -fx-padding: 0 0;
+    -fx-border-color: #0d0d0d;
+    -fx-border-width: 0 0 0 0; /* Bottom border only */
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+    -fx-font-size: 15px;
+}
+
+/* Neon green text and transparent background for all menu items */
+.menu-item {
+    -fx-text-fill: #39ff14; /* Neon green text */
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Neon glow on hover */
+.menu-item:hover {
+    -fx-background-color: rgba(57, 255, 20, 0.2); /* subtle neon green */
+    -fx-text-fill: #ff0080; /* hot pink on hover */
+    -fx-effect: dropshadow(gaussian, #ff0080, 10, 0.8, 0, 0);
+}
+
+/* Neon pink highlight for selected toggle items */
+.radio-menu-item:selected,
+.menu-item:selected {
+    -fx-background-color: rgba(255, 0, 128, 0.3); /* neon pink highlight */
+    -fx-text-fill: #ff0080;
+    -fx-effect: dropshadow(gaussian, #ff0080, 12, 0.9, 0, 0);
+}
+
+/* Style the dropdown popup background */
+.context-menu {
+    -fx-background-color: black; /* dark background for popup */
+    -fx-border-color: #39ff14; /* neon green border */
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, #39ff14, 15, 0.5, 0, 0);
+    -fx-padding: 5px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+
+/* Remove hover color from menu bar items */
+.menu:hover,
+.menu-item:hover {
+    -fx-background-color: transparent; /* No hover background */
+}
+
+
+
+
+.root {
+    -fx-background-color: #0d0d0d; /* Dark background */
+    -fx-text-fill: #39ff14; /* Neon green text */
+}
+
+.label {
+    -fx-text-fill: #39ff14;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow( gaussian , #39ff14 , 10, 0.5 , 0 , 0 );
+}
+
+.button {
+    -fx-background-color: #0d0d0d;
+    -fx-text-fill: #39ff14;
+    -fx-border-color: #39ff14;
+    -fx-border-width: 2;
+    -fx-padding: 8 15;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( gaussian , #39ff14 , 10, 0.5 , 0 , 0 );
+}
+
+.button:hover {
+    -fx-background-color: #39ff14;
+    -fx-text-fill: #0d0d0d;
+    -fx-effect: dropshadow( gaussian , #39ff14 , 20, 0.8 , 0 , 0 );
+}
+
+.text-field {
+    -fx-background-color: #0d0d0d;
+    -fx-text-fill: #39ff14;
+    -fx-border-color: #39ff14;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow( gaussian , #39ff14 , 5, 0.3 , 0 , 0 );
+}
+
+/* Base styling for dark neon theme */
+.root {
+    -fx-background-color: #0d0d0d; /* Very dark background */
+    -fx-text-fill: #39ff14;        /* Neon green text */
+    -fx-font-family: "JetBrains Mono", monospace;
+}
+
+/* ListView Styling */
+.list-view {
+    -fx-background-color: #121212; /* Slightly lighter for contrast */
+    -fx-control-inner-background: #121212;
+    -fx-background-insets: 0;
+    -fx-padding: 5;
+    -fx-border-color: #39ff14;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #39ff14;
+    -fx-padding: 5 10;
+    -fx-font-size: 14px;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #39ff14;
+    -fx-text-fill: #0d0d0d; /* Invert colors when selected */
+    -fx-effect: dropshadow(gaussian, #39ff14, 10, 0.5, 0, 0);
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: rgba(57, 255, 20, 0.3);
+    -fx-cursor: hand;
+}
+
+/* ScrollBar Styling */
+.scroll-bar:vertical {
+    -fx-background-color: #0d0d0d; /* Dark track background */
+    -fx-padding: 2;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: #0d0d0d;
+    -fx-padding: 2;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #39ff14;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, #39ff14, 8, 0.5, 0, 0);
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #66ff66;
+    -fx-effect: dropshadow(gaussian, #66ff66, 10, 0.7, 0, 0);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+}
+
+/* Optional glow for entire ListView container */
+.list-view {
+    -fx-effect: dropshadow(gaussian, #39ff14, 15, 0.4, 0, 0);
+}
+
+/* Reset dialog pane defaults */
+.dialog-pane {
+    -fx-background-color: #101010; /* Neon background */
+    -fx-border-color: #39ff14;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+/* Style header panel */
+.dialog-pane .header-panel {
+    -fx-background-color: #101010;
+    -fx-border-color: #39ff14;
+    -fx-border-width: 0 0 1 0; /* bottom border */
+    -fx-padding: 10px;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #39ff14; /* Neon green text */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Style content label */
+.dialog-pane .content.label {
+    -fx-text-fill: #39ff14; /* Neon text */
+    -fx-font-size: 13px;
+}
+
+/* Style buttons */
+.dialog-pane .button-bar .button {
+    -fx-background-color: #39ff14;
+    -fx-text-fill: #101010;
+    -fx-background-radius: 6;
+    -fx-padding: 5 10;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #66ff66;
+}
+
+/* Style icons like ? button */
+.dialog-pane .graphic-container {
+    -fx-background-color: transparent;
+}

@@ -1,6 +1,8 @@
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/App.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/EnvVars.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/Main.java
+/home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/config/Config.java
+/home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/config/SettingsMenuBar.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/ui/Labels.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/BuildPathString.java
 /home/hector/Dokument/LinuxPathManager/src/main/java/com/github/djaquels/utils/EnvVariableSaver.java

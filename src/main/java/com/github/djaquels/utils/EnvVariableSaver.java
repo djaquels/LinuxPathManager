@@ -15,6 +15,11 @@ import java.util.regex.Pattern;
 
 
 public class EnvVariableSaver implements SavePathCommand {
+	private Map<String, String> shellFiles;
+
+	public EnvVariableSaver(Map<String, String> shellFiles){
+		this.shellFiles = shellFiles;
+	}
     private String formatEnvVar(String shell, String key, String value) {
         switch (shell.toLowerCase()) {
             case "bash":
@@ -41,14 +46,7 @@ public class EnvVariableSaver implements SavePathCommand {
     @Override
     public void execute(ObservableList<String> valuesList) {
         try{
-             Map<String, String> shellFiles = Map.of(
-    	"bash", ".bashrc",
-    	"zsh", ".zshrc",
-    	"fish", ".config/fish/config.fish",
-    	"ksh", ".kshrc",
-		"csh", ".cshrc",
-		"tcsh", ".tcshrc"
-		);
+             Map<String, String> shellFiles = this.shellFiles;
 		Map<String, String[]> shellFilters = Map.of(
 			"bash", new String[] {"export ", "="},
 			"zsh", new String[] {"export ", "="},

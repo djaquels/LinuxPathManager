@@ -1,5 +1,6 @@
 package com.github.djaquels;
 
+import com.github.djaquels.config.SettingsMenuBar;
 import com.github.djaquels.ui.Labels;
 import com.github.djaquels.utils.GlobalPathCommand;
 import com.github.djaquels.utils.GlobalRemotePathCommand;
@@ -43,10 +44,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -73,6 +76,8 @@ public class App extends Application {
     private String remoteUsername;
     private String remotePassword;
     private int remotePort;
+    // Themes
+    private SettingsMenuBar menuBar;
 
     private void updatePath(PathCommand command, ObservableList<String> pathList) {
         invoker.setCommand(command);
@@ -110,6 +115,13 @@ public class App extends Application {
         userPathAsString = String.join(":", userPathList);
         userPathMD5 = StringUtils.getMD5(userPathAsString);
 	    systemPathMD5 = StringUtils.getMD5(String.join(":", systemPathList));
+        // Main layout
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(5, 10, 20, 10));
+        layout.setSpacing(15);
+
+        Scene scene = new Scene(layout, 750, 450);
+        this.menuBar = new SettingsMenuBar(scene);
         /*
          * Controll panel buttons
          * Add new to PATH
@@ -149,10 +161,11 @@ public class App extends Application {
         // Env Vars Window
         Button toEnvVars = new Button(mainWindow.getString("to-env"));
         toEnvVars.setOnAction(e -> {
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
         PathCommand cmd = (remoteModeActive)? new RemoteEnvVariablesCommand(remoteUsername, remoteHost, remotePort, remotePassword) : new EnvVariablesCommand();    
-        SavePathCommand saveCMD = (remoteModeActive)? new RemoteEnvVariableSaver(remoteUsername, remoteHost, remotePort, remotePassword): new EnvVariableSaver();
-        EnvVars envWindow = new EnvVars(cmd, saveCMD, remoteModeActive);
-            envWindow.showWindow(primaryStage);
+        SavePathCommand saveCMD = (remoteModeActive)? new RemoteEnvVariableSaver(remoteUsername, remoteHost, remotePort, remotePassword): new EnvVariableSaver(this.menuBar.getEnabledShellFiles());
+        EnvVars envWindow = new EnvVars(cmd, saveCMD, remoteModeActive, csstheme);
+        envWindow.showWindow(primaryStage);
         });
         // Save
         Button saveButton = new Button(mainWindow.getString("save"));
@@ -163,12 +176,12 @@ public class App extends Application {
 
         // Buttons layout
         HBox buttonBox = new HBox(10); // 10 är mellanrummet mellan knapparna
+        buttonBox.setAlignment(Pos.CENTER_RIGHT);
         buttonBox.getChildren().addAll(addButton, updateButton, deleButton, saveButton, toEnvVars, sshButton);
 
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll(userPathLabel, userListView, systemPathLabel, systemListView, remoteModeLabel, pathField, buttonBox);
+    
 
-        Scene scene = new Scene(layout, 750, 350);
+        layout.getChildren().addAll(menuBar,userPathLabel, userListView, systemPathLabel, systemListView, remoteModeLabel, pathField, buttonBox);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -188,7 +201,12 @@ public class App extends Application {
                 ButtonBar.ButtonData.CANCEL_CLOSE);
 
         alert.getButtonTypes().setAll(userButton, systemButton, cancelButton);
-
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        alert.getDialogPane().getStylesheets().clear();
+        alert.getDialogPane().getStylesheets().add(
+        getClass().getResource(csstheme).toExternalForm()
+        );
+        alert.getDialogPane().getStyleClass().add("custom-dialog");
         alert.showAndWait().ifPresent(result -> {
             if (result == userButton) {
                 addPathToList(userPathList, newPath);
@@ -215,7 +233,7 @@ public class App extends Application {
         String errorHeader = conf.getValue("error");
         String successHeader = conf.getValue("success");
         JSONObject windowLabels = conf.getWindowLabels("save");
-        saveUserPathCommand = (remoteModeActive == true)? new RemoteUserSaveCommand(remoteUsername, remoteHost, remotePort, remotePassword): new UserSaveCommand();
+        saveUserPathCommand = (remoteModeActive == true)? new RemoteUserSaveCommand(remoteUsername, remoteHost, remotePort, remotePassword): new UserSaveCommand(this.menuBar.getEnabledShellFiles());
         if (!onMemoryUserMd5.equals(userPathMD5)) {
             saveUserPathCommand.execute(userPathList);
             updateMD5Signatures();
@@ -272,7 +290,7 @@ public class App extends Application {
     }
     
     private String promptForSudoPassword(){
-        Labels conf = getWindowConfs();
+    Labels conf = getWindowConfs();
 	JSONObject saveWindow = conf.getWindowLabels("save");
 	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 	alert.setTitle(saveWindow.getString("title"));
@@ -284,7 +302,11 @@ public class App extends Application {
 	VBox dialogPaneContent = new VBox(10);
 	dialogPaneContent.getChildren().add(passwordField);
 	alert.getDialogPane().setContent(dialogPaneContent);
-
+    String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        alert.getDialogPane().getStylesheets().clear();
+        alert.getDialogPane().getStylesheets().add(
+        getClass().getResource(csstheme).toExternalForm()
+        );
 	Optional<ButtonType> result = alert.showAndWait();
 	if (result.isPresent() && result.get() == ButtonType.OK) {
 	    return passwordField.getText();
@@ -302,6 +324,11 @@ public class App extends Application {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        alert.getDialogPane().getStylesheets().clear();
+        alert.getDialogPane().getStylesheets().add(
+        getClass().getResource(csstheme).toExternalForm()
+        );
         alert.setContentText(content);
         alert.showAndWait();
     }
@@ -311,6 +338,11 @@ public class App extends Application {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        alert.getDialogPane().getStylesheets().clear();
+        alert.getDialogPane().getStylesheets().add(
+        getClass().getResource(csstheme).toExternalForm()
+        );
         alert.showAndWait();
     }
 
@@ -319,6 +351,12 @@ public class App extends Application {
         alert.setTitle(window.getString("title"));
         alert.setHeaderText(window.getString("header"));
         alert.setContentText(window.getString("confirm-label") + itemValue);
+        // Apply custom theme
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        alert.getDialogPane().getStylesheets().clear();
+        alert.getDialogPane().getStylesheets().add(
+        getClass().getResource(csstheme).toExternalForm()
+        );        
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
@@ -416,6 +454,8 @@ public class App extends Application {
         grid.add(statusLabel, 1, 5);
 
         Scene dialogScene = new Scene(grid, 350, 250);
+        String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
+        dialogScene.getStylesheets().add(getClass().getResource(csstheme).toExternalForm());
         dialog.setScene(dialogScene);
         dialog.showAndWait();
     }

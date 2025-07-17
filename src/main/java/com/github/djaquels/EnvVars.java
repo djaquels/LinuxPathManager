@@ -7,6 +7,8 @@ import com.github.djaquels.utils.SavePathCommand;
 import org.json.JSONObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -23,12 +25,14 @@ public class EnvVars  {
     // Remote controlers
     private Label remoteModeLabel;
     private Boolean remoteModeActive;
+    private String theme;
 
-    public EnvVars(PathCommand envVarsCommand, SavePathCommand envVarsSaveCommand, Boolean isRemote) {
+    public EnvVars(PathCommand envVarsCommand, SavePathCommand envVarsSaveCommand, Boolean isRemote, String theme) {
         this.remoteModeActive = isRemote;
         this.envVarsCommand = envVarsCommand;
         this.conf = LanguageUtils.getWindowConfs();
         this.saveCommand = envVarsSaveCommand;
+        this.theme = theme;
     }
 
     public void showWindow(Stage parentStage) {
@@ -98,17 +102,24 @@ public class EnvVars  {
             alert.setTitle(mainWindow.getString("success"));
             alert.setHeaderText(null);
             alert.setContentText(mainWindow.getString("success-message"));
+            alert.getDialogPane().getStylesheets().clear();
+            alert.getDialogPane().getStylesheets().add(
+            getClass().getResource(this.theme).toExternalForm()
+            );
             alert.showAndWait();
         });
 
         HBox inputBox = new HBox(5, keyField, valueField, addButton, updateButton, deleteButton, saveButton);
+        inputBox.setAlignment(Pos.CENTER_RIGHT); 
         VBox layout = new VBox(10, listView, inputBox, remoteModeLabel);
-
+        layout.setPadding(new Insets(5, 10, 5, 10));
         Stage dialog = new Stage();
         dialog.initOwner(parentStage);
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle(mainWindow.getString("success-message"));
-        dialog.setScene(new Scene(layout, 600, 400));
+        Scene scene = new Scene(layout, 650, 350);
+        scene.getStylesheets().add(getClass().getResource(this.theme).toExternalForm());
+        dialog.setScene(scene);
         dialog.showAndWait();
     }
 

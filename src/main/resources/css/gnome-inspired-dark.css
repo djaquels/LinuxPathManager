@@ -1,0 +1,183 @@
+/* === Menubar === */
+.menu {
+    -fx-text-fill: #eeeeec;
+}
+
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #eeeeec;
+}
+
+.menu-bar {
+    -fx-background-color: #2e3436; /* Dark header bar */
+    -fx-text-fill: #eeeeec;
+    -fx-padding: 0 0;
+    -fx-border-color: #2e3436;
+    -fx-border-width: 0 0 0 0; /* Bottom border only */
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+    -fx-font-size: 15px;
+}
+
+/* GNOME Dark Theme */
+.menu-item {
+    -fx-text-fill: #f2f2f2; /* light text */
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(0, 122, 204, 0.3); /* soft blue highlight */
+    -fx-text-fill: #33cfff; /* GNOME blue accent */
+}
+
+.radio-menu-item:selected,
+.menu-item:selected {
+    -fx-background-color: rgba(0, 122, 204, 0.5);
+    -fx-text-fill: #33cfff;
+}
+
+/* Menu popup */
+.context-menu {
+    -fx-background-color: #2e3436; /* GNOME dark background */
+    -fx-border-color: #555;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+/* === Root Scene Background === */
+.root {
+    -fx-background-color: #2e3436; /* GNOME dark gray */
+    -fx-text-fill: #eeeeec;        /* Light text for contrast */
+    -fx-font-family: "Cantarell", sans-serif;
+}
+
+/* === Buttons === */
+.button {
+    -fx-background-color: #3584e4; /* GNOME blue */
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 4;
+    -fx-padding: 6 12;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.2, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: #1c71d8;
+}
+
+.button:pressed {
+    -fx-background-color: #1a5fb4;
+}
+
+/* === Text Fields === */
+.text-field {
+    -fx-background-color: #3a3f42; /* Slightly lighter dark */
+    -fx-text-fill: #eeeeec;
+    -fx-border-color: #555753;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-padding: 4 8;
+}
+
+.text-field:focused {
+    -fx-border-color: #3584e4; /* GNOME blue highlight */
+}
+
+/* === Labels === */
+.label {
+    -fx-text-fill: #eeeeec;
+    -fx-font-size: 13px;
+}
+
+/* === ListView === */
+.list-view {
+    -fx-background-color: #2e3436;
+    -fx-control-inner-background: #2e3436;
+    -fx-border-color: #555753;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #eeeeec;
+    -fx-padding: 5 10;
+    -fx-font-size: 13px;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #3584e4; /* GNOME blue for selected */
+    -fx-text-fill: #ffffff;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: rgba(53, 132, 228, 0.2);
+    -fx-cursor: hand;
+}
+
+/* === ScrollBar === */
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: #2e3436;
+    -fx-padding: 2;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #555753;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #3584e4;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+}
+
+
+/* GNOME Dark Dialog Styling */
+.dialog-pane {
+    -fx-background-color: #2e3436;
+    -fx-border-color: #555753;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #3a3f42;
+    -fx-border-color: #555753;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10px;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #eeeeec;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: #d3d7cf;
+    -fx-font-size: 13px;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-color: #729fcf;
+    -fx-text-fill: #2e3436;
+    -fx-background-radius: 4;
+    -fx-padding: 5 15;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #3465a4;
+}

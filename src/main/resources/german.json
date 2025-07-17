@@ -58,5 +58,10 @@
     "password": "Passwort:",
     "connect": "Verbinden",
     "cancel": "Abbrechen"
+  },
+  "settings": {
+    "theme": "Thema auswählen",
+    "shells": "Shell auswählen"
   }
+  
 }
