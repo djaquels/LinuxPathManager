@@ -20,7 +20,7 @@ sudo apt install ./linuxpathmanager.deb
 ```
 
 ## From ppa
-pending
+[Now available](https://launchpad.net/~hjacales-pro/+archive/ubuntu/hippo-systems)
 
 ## Features
 
