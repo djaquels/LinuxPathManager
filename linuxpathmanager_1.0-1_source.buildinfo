@@ -6,14 +6,14 @@ Source: linuxpathmanager
 Architecture: source
 Version: 1.0-1
 Checksums-Md5:
- 8d84a2b4fc270fc5d162e1de62dbf206 1374 linuxpathmanager_1.0-1.dsc
+ fcfee7b65dff4cac72db836d48b066f5 1374 linuxpathmanager_1.0-1.dsc
 Checksums-Sha1:
- 4b3360458172271fe886cbf26e00f4aabf9615a0 1374 linuxpathmanager_1.0-1.dsc
+ b89fc8ae89647e8cfb1e2e14924870a5a1d1e95a 1374 linuxpathmanager_1.0-1.dsc
 Checksums-Sha256:
- b2ddb12131123c45a4af3f99c388664df8c66b88b92df926122afc622beb48ea 1374 linuxpathmanager_1.0-1.dsc
+ c722f8eb1953b4af9922ef084cfc903a0abe72141578a73e9c583c005e12c9ac 1374 linuxpathmanager_1.0-1.dsc
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Tue, 01 Jul 2025 16:01:10 +0200
+Build-Date: Fri, 04 Jul 2025 15:08:08 +0200
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-includes
@@ -370,15 +370,15 @@ Environment:
 
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCgAdFiEELb7FqzD3SEGXzhhqbWejLw+YVl4FAmhj6ikACgkQbWejLw+Y
-Vl61+Qv/QfJWW5O0uTK2jiknDDtnsPyiPBH2mh2d/wy7L8u16h4t8ag0ZW4n8dnv
-f6L0yHUUs08HEB2lxMb7L8gXuo0sVt+gUAqqyCBaNRqiP0oMLHh9QblywhCe641J
-v5In1WNfL7qP0yudsdtk2gDtafVOMOJGqNDzvhDzKdgAGlnpHs39Pw3miuMVAjEh
-B4woQodPmhWjFIga/VhKLKmjP2KpxxJra8ey82mSRJEhvgxQiY5xZ5882hFblc/c
-WO25khdKFAS6LkFZwunYTH+5dgRCGBOfZ1bvv+n0wCDbs5nK/89HoJWzGcht47w6
-kshUBRTQvG6E2rmLAXg3xwNzSCue2xr75B5PkhG783/RGjBSicxpj/YCAuqiru6u
-zKk5vAWTrLS20KvQltsRfSJwA7/GlLxFVs9vN+LqrpqzU4UU6QwGYOHcxp5LmHtc
-HXMoRn2X0t14QeKUxe5ifVbx+YW4bHZ+Y26NzrWTvc1TrkFCT0eHh9HCvUrnZBH5
-7W7YidqO
-=S2/I
+iQGzBAEBCgAdFiEELb7FqzD3SEGXzhhqbWejLw+YVl4FAmhn0nQACgkQbWejLw+Y
+Vl7I0gv8CX865J7iMoRO6lZ6x2myoHoGeg9UD0qmkrN1da1AtjvWCfZTgvrSu3M/
+ZhJJucgsva2HnoWrML/QcS+NLcb8fV30nOuFRtIp+gFd/QlnNMGhW7513bdWoNtt
+7XGSU9c+R2jGES7N+DE5xK6CebtRpZMIjmlVn7d+44un244GOTzewCtEk+6MnyYG
+83fwSGwRwKMI22TiZCMBvnKI0+XtuQJYaslhY0y/nbOKm5SwRyitlLusMlUcg+f2
+dyQZWfuRC3QsoMWy6IR5ZZCpmXFT0318t9ZN6LcwIl6Woc7/Q+ez7fTiaXj39fvW
+lCgvkTsrWUXAAO4BGXyyCvzDQMn1nFbNcLwGkkZSPbgJ3UZZW8UD7h0I3zPpEmIF
+XfTXsY91vqCMw9knZyCK1bogPBiBNK9SgxVqi+tgOgnPXdKSqWazzk7RSLOAQWLx
+N6DWm0xgtIdbpsxEiW3K1o6QMQE3i6+lG2BjSgGy84RIbLoP6uln5pmbQAKMtSvu
+kEkQkf6Q
+=a0R5
 -----END PGP SIGNATURE-----
