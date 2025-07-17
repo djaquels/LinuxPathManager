@@ -49,6 +49,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -175,6 +176,7 @@ public class App extends Application {
 
         // Buttons layout
         HBox buttonBox = new HBox(10); // 10 är mellanrummet mellan knapparna
+        buttonBox.setAlignment(Pos.CENTER_RIGHT);
         buttonBox.getChildren().addAll(addButton, updateButton, deleButton, saveButton, toEnvVars, sshButton);
 
     

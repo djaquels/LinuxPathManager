@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -109,6 +110,7 @@ public class EnvVars  {
         });
 
         HBox inputBox = new HBox(5, keyField, valueField, addButton, updateButton, deleteButton, saveButton);
+        inputBox.setAlignment(Pos.CENTER_RIGHT); 
         VBox layout = new VBox(10, listView, inputBox, remoteModeLabel);
         layout.setPadding(new Insets(5, 10, 5, 10));
         Stage dialog = new Stage();
