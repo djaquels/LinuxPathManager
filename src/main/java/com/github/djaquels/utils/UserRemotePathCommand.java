@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class UserRemotePathCommand implements PathCommand {
     private final String username;
