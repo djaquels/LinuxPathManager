@@ -65,5 +65,9 @@
         "password":"Lösenord:",
         "connect":"Ansluta",
         "cancel":"Avboka"
+    },
+    "settings": {
+        "theme": "Välj skal",
+        "shells": "Välj Shells"
     }
 }

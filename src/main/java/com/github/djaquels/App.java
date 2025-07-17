@@ -163,7 +163,7 @@ public class App extends Application {
         toEnvVars.setOnAction(e -> {
         String csstheme = "/css/" + this.menuBar.getCurrentTheme() + ".css";    
         PathCommand cmd = (remoteModeActive)? new RemoteEnvVariablesCommand(remoteUsername, remoteHost, remotePort, remotePassword) : new EnvVariablesCommand();    
-        SavePathCommand saveCMD = (remoteModeActive)? new RemoteEnvVariableSaver(remoteUsername, remoteHost, remotePort, remotePassword): new EnvVariableSaver();
+        SavePathCommand saveCMD = (remoteModeActive)? new RemoteEnvVariableSaver(remoteUsername, remoteHost, remotePort, remotePassword): new EnvVariableSaver(this.menuBar.getEnabledShellFiles());
         EnvVars envWindow = new EnvVars(cmd, saveCMD, remoteModeActive, csstheme);
         envWindow.showWindow(primaryStage);
         });
@@ -233,7 +233,7 @@ public class App extends Application {
         String errorHeader = conf.getValue("error");
         String successHeader = conf.getValue("success");
         JSONObject windowLabels = conf.getWindowLabels("save");
-        saveUserPathCommand = (remoteModeActive == true)? new RemoteUserSaveCommand(remoteUsername, remoteHost, remotePort, remotePassword): new UserSaveCommand();
+        saveUserPathCommand = (remoteModeActive == true)? new RemoteUserSaveCommand(remoteUsername, remoteHost, remotePort, remotePassword): new UserSaveCommand(this.menuBar.getEnabledShellFiles());
         if (!onMemoryUserMd5.equals(userPathMD5)) {
             saveUserPathCommand.execute(userPathList);
             updateMD5Signatures();

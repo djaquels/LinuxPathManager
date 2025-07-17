@@ -58,5 +58,9 @@
     "password": "Contraseña:",
     "connect": "Conectar",
     "cancel": "Cancelar"
-  }
+  },
+  "settings": {
+    "theme": "Selecciona el diseño",
+    "shells": "Selecciona los shells"
+}
 }
