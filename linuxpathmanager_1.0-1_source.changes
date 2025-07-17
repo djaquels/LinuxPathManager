@@ -1,0 +1,45 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Tue, 01 Jul 2025 14:49:52 +0200
+Source: linuxpathmanager
+Built-For-Profiles: noudeb
+Architecture: source
+Version: 1.0-1
+Distribution: focal
+Urgency: medium
+Maintainer: Hector Jacales <daniel.jacales@outlook.com>
+Changed-By: hector <daniel.jacales@outlook.com>
+Closes: 0001
+Changes:
+ linuxpathmanager (1.0-1) focal; urgency=medium
+ .
+   * Initial release. (Closes: #0001)
+Checksums-Sha1:
+ 4b3360458172271fe886cbf26e00f4aabf9615a0 1374 linuxpathmanager_1.0-1.dsc
+ 6b7365caa9c6acfd8c863c83ff5a98f96f84f277 9403654 linuxpathmanager_1.0-1.tar.gz
+ c696140934445408b52c4319b7d28c55b26ba530 13348 linuxpathmanager_1.0-1_source.buildinfo
+Checksums-Sha256:
+ b2ddb12131123c45a4af3f99c388664df8c66b88b92df926122afc622beb48ea 1374 linuxpathmanager_1.0-1.dsc
+ 341b5eb6479a21476b190bce5c9041eac80a61f6b22bc2d48e4c721867217e68 9403654 linuxpathmanager_1.0-1.tar.gz
+ 2a6745f6cd54140d3816172a2755a9ab0f52806f258c3640a320b7ec63d2a93c 13348 linuxpathmanager_1.0-1_source.buildinfo
+Files:
+ 8d84a2b4fc270fc5d162e1de62dbf206 1374 utils optional linuxpathmanager_1.0-1.dsc
+ df0cbc7cfab691e0b6643f1f61685d66 9403654 utils optional linuxpathmanager_1.0-1.tar.gz
+ 0a2de0fc6dd7f1c3d8f2e0456c3bb16f 13348 utils optional linuxpathmanager_1.0-1_source.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEELb7FqzD3SEGXzhhqbWejLw+YVl4FAmhj6ikACgkQbWejLw+Y
+Vl4E9Qv/doeYp9+GvvPlv8cvIuiHUp+OeMRcCUAEns49rA4Y4AsgRGYIX3GXvlLJ
+VEDAbWY5iEC+thxLSzFWZpvdLroTq/pgPTsH8fjFQYfDcrFB3zZh9I5575Cx0/pM
+vZSTaWVIIPIXgOk6grLTijSE6SSlxvEXhmVUO73/ZP0u6cmLkPSrNmeIH3r101Lf
+Ra3oVEI2WPQYW4QPl4ZjOi+suTKx/6KVY8/ks2lJsNYDv+IfAlHbCIFYUBT3DAH8
+Ho+wB4n13CQgbDejiBLmmHjBH5vaDy48atwAFm4j5C3laWurUZLxm3tRjnluGkw1
+9wLlHT0Tl241AeWOJI/qzrW7g+OWAZly8vix3u3azi1vv1YbDqqQkzI3op+s91uz
+cYG9z9VuptMgb6dPhcTDnqr7sXUR0qFlr/J1aMPo3AT25SQh0IPwFWJqVD3PAKpJ
+l9jD4unJqXsjMGeiZ4iHFDAsl8PeS7U29E4eZf5pQKMoTGMmbp/OPTI1pBE2+ePk
+QiomWRY3
+=/fQW
+-----END PGP SIGNATURE-----
