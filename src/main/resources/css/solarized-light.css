@@ -1,0 +1,61 @@
+/* Solarized Light Theme */
+.root {
+    -fx-background-color: #fdf6e3;
+    -fx-text-fill: #657b83;
+    -fx-font-family: "Fira Mono", "JetBrains Mono", "Consolas", monospace;
+}
+.label {
+    -fx-text-fill: #586e75;
+}
+.button {
+    -fx-background-color: #eee8d5;
+    -fx-text-fill: #657b83;
+    -fx-border-color: #b58900;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-padding: 7 14;
+}
+.button:hover {
+    -fx-background-color: #b58900;
+    -fx-text-fill: #fdf6e3;
+}
+.text-field {
+    -fx-background-color: #eee8d5;
+    -fx-text-fill: #657b83;
+    -fx-border-color: #b58900;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+}
+.menu-bar, .menu {
+    -fx-background-color: #eee8d5;
+    -fx-text-fill: #657b83;
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+}
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #657b83;
+}
+.menu-item:hover, .menu-item:selected {
+    -fx-background-color: #b58900;
+    -fx-text-fill: #fdf6e3;
+}
+.list-view {
+    -fx-background-color: #fdf6e3;
+    -fx-control-inner-background: #eee8d5;
+    -fx-border-color: #b58900;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #586e75;
+}
+.list-cell:filled:selected {
+    -fx-background-color: #b58900;
+    -fx-text-fill: #fdf6e3;
+}
+.dialog-pane {
+    -fx-background-color: #fdf6e3;
+    -fx-border-color: #b58900;
+}

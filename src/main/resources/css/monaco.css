@@ -1,0 +1,61 @@
+/* Custom Theme: #131328 (Dark Blue), #4C0013 (Wine), Peach Light (#FFDAB9) */
+.root {
+    -fx-background-color: #131328;
+    -fx-text-fill: #FFDAB9;
+    -fx-font-family: "JetBrains Mono", "Fira Mono", "Consolas", monospace;
+}
+.label {
+    -fx-text-fill: #FFDAB9;
+}
+.button {
+    -fx-background-color: #4C0013;
+    -fx-text-fill: #FFDAB9;
+    -fx-border-color: #FFDAB9;
+    -fx-border-width: 1.5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 16;
+}
+.button:hover {
+    -fx-background-color: #FFDAB9;
+    -fx-text-fill: #4C0013;
+}
+.text-field {
+    -fx-background-color: #1a1a35;
+    -fx-text-fill: #FFDAB9;
+    -fx-border-color: #FFDAB9;
+    -fx-border-width: 1.2;
+    -fx-background-radius: 5;
+}
+.menu-bar, .menu {
+    -fx-background-color: #4C0013;
+    -fx-text-fill: #FFDAB9;
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+}
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFDAB9;
+}
+.menu-item:hover, .menu-item:selected {
+    -fx-background-color: #FFDAB9;
+    -fx-text-fill: #4C0013;
+}
+.list-view {
+    -fx-background-color: #131328;
+    -fx-control-inner-background: #1a1a35;
+    -fx-border-color: #FFDAB9;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+}
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFDAB9;
+}
+.list-cell:filled:selected {
+    -fx-background-color: #FFDAB9;
+    -fx-text-fill: #4C0013;
+}
+.dialog-pane {
+    -fx-background-color: #131328;
+    -fx-border-color: #FFDAB9;
+}

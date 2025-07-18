@@ -1,0 +1,61 @@
+/* Dracula Inspired Theme */
+.root {
+    -fx-background-color: #282a36;
+    -fx-text-fill: #f8f8f2;
+    -fx-font-family: "JetBrains Mono", "Fira Mono", "Consolas", monospace;
+}
+.label {
+    -fx-text-fill: #f8f8f2;
+}
+.button {
+    -fx-background-color: #44475a;
+    -fx-text-fill: #f8f8f2;
+    -fx-border-color: #bd93f9;
+    -fx-border-width: 1;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+}
+.button:hover {
+    -fx-background-color: #6272a4;
+    -fx-text-fill: #f8f8f2;
+}
+.text-field {
+    -fx-background-color: #44475a;
+    -fx-text-fill: #f8f8f2;
+    -fx-border-color: #50fa7b;
+    -fx-border-width: 1;
+    -fx-background-radius: 6;
+}
+.menu-bar, .menu {
+    -fx-background-color: #282a36;
+    -fx-text-fill: #f8f8f2;
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+}
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f8f8f2;
+}
+.menu-item:hover, .menu-item:selected {
+    -fx-background-color: #bd93f9;
+    -fx-text-fill: #282a36;
+}
+.list-view {
+    -fx-background-color: #282a36;
+    -fx-control-inner-background: #44475a;
+    -fx-border-color: #bd93f9;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+}
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f8f8f2;
+}
+.list-cell:filled:selected {
+    -fx-background-color: #bd93f9;
+    -fx-text-fill: #282a36;
+}
+.dialog-pane {
+    -fx-background-color: #282a36;
+    -fx-border-color: #bd93f9;
+}

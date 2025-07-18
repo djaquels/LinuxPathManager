@@ -28,7 +28,9 @@ public class SettingsMenuBar extends MenuBar {
             "tcsh", ".tcshrc"
     );
     private final String[] themes = {"default", "neon-green", 
-    "gnome-inspired", "kde-inspired", "gnome-inspired-dark", "kde-inspired-dark"};
+    "gnome-inspired", "kde-inspired", "gnome-inspired-dark", "kde-inspired-dark",
+    "solarized-light", "solarized-dark", "dracula", "monaco"
+    };
     private Config config;
 
     private final Scene scene;
