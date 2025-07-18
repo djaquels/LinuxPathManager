@@ -49,7 +49,8 @@
     "delete": "eliminar",
     "success": "¡Guardado!",
     "success-message": "¡Variables de entorno guardadas!",
-    "edit-message": "Editar variables de entorno"
+    "edit-message": "Editar variables de entorno",
+    "header": "Variables de entorno"
   },
   "ssh": {
     "username": "Nombre de usuario:",

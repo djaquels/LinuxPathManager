@@ -49,7 +49,8 @@
     "delete": "löschen",
     "success": "Gespeichert!",
     "success-message": "Umgebungsvariablen gespeichert!",
-    "edit-message": "Umgebungsvariablen bearbeiten"
+    "edit-message": "Umgebungsvariablen bearbeiten",
+    "header": "Umgebungsvariablen"
   },
   "ssh": {
     "username": "Benutzername:",

@@ -2,11 +2,16 @@ package com.github.djaquels.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.github.djaquels.ui.Labels;
+import com.github.djaquels.utils.LanguageUtils;
+
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
+
+import org.json.JSONObject;
 
 public class SettingsMenuBar extends MenuBar {
 
@@ -28,7 +33,14 @@ public class SettingsMenuBar extends MenuBar {
 
     private final Scene scene;
 
+    private Labels getWindowConfs() {
+       return LanguageUtils.getWindowConfs();
+    }
+
     public SettingsMenuBar(Scene scene) {
+        
+        Labels conf = getWindowConfs();
+        JSONObject settingsWindow = conf.getWindowLabels("settings");
         this.scene = scene;
         this.objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
@@ -39,7 +51,7 @@ public class SettingsMenuBar extends MenuBar {
         Menu settingsMenu = new Menu("⋮");
 
         // Theme selector
-        Menu themeMenu = new Menu("Select Theme");
+        Menu themeMenu = new Menu(settingsWindow.getString("theme"));
         ToggleGroup themeGroup = new ToggleGroup();
         for (String theme : themes) {
             RadioMenuItem themeItem = new RadioMenuItem(capitalize(theme));
@@ -56,7 +68,7 @@ public class SettingsMenuBar extends MenuBar {
         }
         
         // Shell selector
-        Menu shellsMenu = new Menu("Select Shells to Configure");
+        Menu shellsMenu = new Menu(settingsWindow.getString("shells"));
         for (String shell : shellFiles.keySet()) {
             CheckMenuItem shellItem = new CheckMenuItem(shell);
             shellItem.setSelected(config.getEnabledShells().getOrDefault(shell, false));

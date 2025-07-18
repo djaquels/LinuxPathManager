@@ -20,9 +20,6 @@ import com.github.djaquels.utils.RemoteEnvVariableSaver;
 import com.github.djaquels.utils.RemoteEnvVariablesCommand;
 import com.github.djaquels.utils.LanguageUtils;
 import com.github.djaquels.utils.PathCommandFactory;
-
-//import com.github.djaquels.utils.savePathCommand;
-
 import java.util.Locale;
 import java.util.Optional;
 
@@ -89,11 +86,7 @@ public class App extends Application {
         userPathMD5 = StringUtils.getMD5(userPathAsString);
 	    systemPathMD5 = StringUtils.getMD5(String.join(":", systemPathList));
     }
-
-    private String getLocalLanguage() {
-       return LanguageUtils.getLocalLanguage();
-    }
-
+    
     private Labels getWindowConfs() {
        return LanguageUtils.getWindowConfs();
     }

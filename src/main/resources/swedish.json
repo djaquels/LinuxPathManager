@@ -1,5 +1,5 @@
 {
-    "appName": "Path Direktör",
+    "appName": "Path Chef",
     "error": "fel",
     "success": "lycka",
     "main": {
@@ -56,7 +56,8 @@
         "delete": "ta bort",
         "success": "Sparad!",
         "success-message": "Miljövariabler sparade!",
-        "edit-message": "Redigera miljövariabler"
+        "edit-message": "Redigera miljövariabler",
+        "header": "Miljövariabler"
     },
      "ssh": {
         "username":"Användarnamn:",
