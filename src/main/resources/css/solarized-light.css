@@ -1,0 +1,94 @@
+/* Solarized Light Theme */
+.root {
+    -fx-background-color: #fdf6e3;
+    -fx-text-fill: #657b83;
+    -fx-font-family: "JetBrains Mono", "Fira Mono", "Consolas", monospace;
+}
+.label {
+    -fx-text-fill: #586e75;
+}
+.button {
+    -fx-background-color: #eee8d5;
+    -fx-text-fill: #657b83;
+    -fx-border-color: #b58900;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-padding: 7 14;
+}
+.button:hover {
+    -fx-background-color: #b58900;
+    -fx-text-fill: #fdf6e3;
+}
+.text-field {
+    -fx-background-color: #eee8d5;
+    -fx-text-fill: #657b83;
+    -fx-border-color: #b58900;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+}
+.menu-bar, .menu {
+    -fx-background-color: #fdf6e3;
+    -fx-text-fill: #657b83;
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+    -fx-font-size: 16px;
+}
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #657b83;
+}
+.menu-item:hover, .menu-item:selected {
+    -fx-background-color: #b58900;
+    -fx-text-fill: #fdf6e3;
+}
+.list-view {
+    -fx-background-color: #fdf6e3;
+    -fx-control-inner-background: #eee8d5;
+    -fx-border-color: #b58900;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #586e75;
+}
+.list-cell:filled:selected {
+    -fx-background-color: #b58900;
+    -fx-text-fill: #fdf6e3;
+}
+.dialog-pane {
+    -fx-background-color: #fdf6e3;
+    -fx-border-color: #b58900;
+}
+
+/* ScrollBar Styling */
+.scroll-bar:vertical {
+    -fx-background-color: #fdf6e3; /* Dark track background */
+    -fx-padding: 2;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: #fdf6e3;
+    -fx-padding: 2;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #657b83;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, #fdf6e3, 8, 0.5, 0, 0);
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #657b83;
+    -fx-effect: dropshadow(gaussian, #fdf6e3, 10, 0.7, 0, 0);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+}

@@ -49,7 +49,8 @@
         "delete": "delete",
         "success": "Saved!",
         "success-message": "Environment variables saved!",
-        "edit-message": "Edit Environment Variables"
+        "edit-message": "Edit Environment Variables",
+        "header": "Environment variables"
     },
     "ssh": {
         "username":"Username:",

@@ -49,7 +49,8 @@
     "delete": "supprimer",
     "success": "Enregistré !",
     "success-message": "Variables d'environnement enregistrées !",
-    "edit-message": "Modifier les variables d'environnement"
+    "edit-message": "Modifier les variables d'environnement",
+    "header": "Variables d'environnement"
   },
   "ssh": {
     "username": "Nom d'utilisateur :",

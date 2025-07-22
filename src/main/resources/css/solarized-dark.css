@@ -1,0 +1,104 @@
+/* Solarized Dark Theme */
+.root {
+    -fx-background-color: #002b36;
+    -fx-text-fill: #839496;
+    -fx-font-family: "JetBrains Mono", "Fira Mono", "Consolas", monospace;
+
+}
+.label {
+    -fx-text-fill: #93a1a1;
+}
+.button {
+    -fx-background-color: #073642;
+    -fx-text-fill: #839496;
+    -fx-border-color: #2aa198;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-padding: 7 14;
+}
+.button:hover {
+    -fx-background-color: #2aa198;
+    -fx-text-fill: #002b36;
+}
+.text-field {
+    -fx-background-color: #073642;
+    -fx-text-fill: #839496;
+    -fx-border-color: #2aa198;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+}
+.menu-bar, .menu {
+    -fx-background-color: #002b36;
+    -fx-text-fill: #839496;
+    -fx-alignment: center-right; /* For container alignment */
+    -fx-text-alignment: right;   /* For text inside label */
+    -fx-font-size: 16px;
+}
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #839496;
+}
+.menu-item:hover, .menu-item:selected {
+    -fx-background-color: #2aa198;
+    -fx-text-fill: #002b36;
+}
+
+.context-menu {
+    -fx-background-color: #002b36; /* dark background for popup */
+    -fx-border-color: #2aa198; /* neon green border */
+    -fx-border-width: 2px;
+    -fx-padding: 5px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+.list-view {
+    -fx-background-color: #002b36;
+    -fx-control-inner-background: #073642;
+    -fx-border-color: #2aa198;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #93a1a1;
+}
+.list-cell:filled:selected {
+    -fx-background-color: #2aa198;
+    -fx-text-fill: #002b36;
+}
+.dialog-pane {
+    -fx-background-color: #002b36;
+    -fx-border-color: #2aa198;
+}
+
+/* ScrollBar Styling */
+.scroll-bar:vertical {
+    -fx-background-color: #002b36; /* Dark track background */
+    -fx-padding: 2;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: #002b36;
+    -fx-padding: 2;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #2aa198;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, #2aa198, 8, 0.5, 0, 0);
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #002b36;
+    -fx-effect: dropshadow(gaussian, #002b36, 10, 0.7, 0, 0);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+}

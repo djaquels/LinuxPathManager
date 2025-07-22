@@ -116,7 +116,7 @@ public class EnvVars  {
         Stage dialog = new Stage();
         dialog.initOwner(parentStage);
         dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.setTitle(mainWindow.getString("success-message"));
+        dialog.setTitle(mainWindow.getString("header"));
         Scene scene = new Scene(layout, 650, 350);
         scene.getStylesheets().add(getClass().getResource(this.theme).toExternalForm());
         dialog.setScene(scene);
