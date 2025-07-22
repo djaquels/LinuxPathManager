@@ -40,6 +40,16 @@
     -fx-background-color: #bd93f9;
     -fx-text-fill: #282a36;
 }
+
+.context-menu {
+    -fx-background-color: #282a36; /* dark background for popup */
+    -fx-border-color: #bd93f9; /* neon green border */
+    -fx-border-width: 2px;
+    -fx-padding: 5px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+
 .list-view {
     -fx-background-color: #282a36;
     -fx-control-inner-background: #44475a;
@@ -58,4 +68,36 @@
 .dialog-pane {
     -fx-background-color: #282a36;
     -fx-border-color: #bd93f9;
+}
+
+/* ScrollBar Styling */
+.scroll-bar:vertical {
+    -fx-background-color: #bd93f9; /* Dark track background */
+    -fx-padding: 2;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: #bd93f9;
+    -fx-padding: 2;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #282a36;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, #282a36, 8, 0.5, 0, 0);
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #bd93f9;
+    -fx-effect: dropshadow(gaussian, #bd93f9, 10, 0.7, 0, 0);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
 }

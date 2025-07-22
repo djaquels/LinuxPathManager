@@ -27,10 +27,11 @@
     -fx-background-radius: 5;
 }
 .menu-bar, .menu {
-    -fx-background-color: #4C0013;
+    -fx-background-color: #131328;
     -fx-text-fill: #FFDAB9;
     -fx-alignment: center-right; /* For container alignment */
     -fx-text-alignment: right;   /* For text inside label */
+    -fx-font-size: 16px;
 }
 .menu-item {
     -fx-background-color: transparent;
@@ -40,6 +41,16 @@
     -fx-background-color: #FFDAB9;
     -fx-text-fill: #4C0013;
 }
+
+.context-menu {
+    -fx-background-color: #131328; /* dark background for popup */
+    -fx-border-color: #4C0013; /* neon green border */
+    -fx-border-width: 2px;
+    -fx-padding: 5px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+
 .list-view {
     -fx-background-color: #131328;
     -fx-control-inner-background: #1a1a35;
@@ -58,4 +69,36 @@
 .dialog-pane {
     -fx-background-color: #131328;
     -fx-border-color: #FFDAB9;
+}
+
+/* ScrollBar Styling */
+.scroll-bar:vertical {
+    -fx-background-color: #0d0d0d; /* Dark track background */
+    -fx-padding: 2;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: #0d0d0d;
+    -fx-padding: 2;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #4C0013;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, #4C0013, 8, 0.5, 0, 0);
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #0d0d0d;
+    -fx-effect: dropshadow(gaussian, #0d0d0d, 10, 0.7, 0, 0);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
 }

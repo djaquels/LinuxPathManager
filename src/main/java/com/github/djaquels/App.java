@@ -113,7 +113,7 @@ public class App extends Application {
         layout.setPadding(new Insets(5, 10, 20, 10));
         layout.setSpacing(15);
 
-        Scene scene = new Scene(layout, 750, 450);
+        Scene scene = new Scene(layout, 850, 450);
         this.menuBar = new SettingsMenuBar(scene);
         /*
          * Controll panel buttons

@@ -2,7 +2,7 @@
 .root {
     -fx-background-color: #fdf6e3;
     -fx-text-fill: #657b83;
-    -fx-font-family: "Fira Mono", "JetBrains Mono", "Consolas", monospace;
+    -fx-font-family: "JetBrains Mono", "Fira Mono", "Consolas", monospace;
 }
 .label {
     -fx-text-fill: #586e75;
@@ -27,10 +27,11 @@
     -fx-background-radius: 4;
 }
 .menu-bar, .menu {
-    -fx-background-color: #eee8d5;
+    -fx-background-color: #fdf6e3;
     -fx-text-fill: #657b83;
     -fx-alignment: center-right; /* For container alignment */
     -fx-text-alignment: right;   /* For text inside label */
+    -fx-font-size: 16px;
 }
 .menu-item {
     -fx-background-color: transparent;
@@ -58,4 +59,36 @@
 .dialog-pane {
     -fx-background-color: #fdf6e3;
     -fx-border-color: #b58900;
+}
+
+/* ScrollBar Styling */
+.scroll-bar:vertical {
+    -fx-background-color: #fdf6e3; /* Dark track background */
+    -fx-padding: 2;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: #fdf6e3;
+    -fx-padding: 2;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #657b83;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, #fdf6e3, 8, 0.5, 0, 0);
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #657b83;
+    -fx-effect: dropshadow(gaussian, #fdf6e3, 10, 0.7, 0, 0);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
 }

@@ -10,7 +10,7 @@
     -fx-border-width: 0 0 1 0; /* Bottom border only */
     -fx-alignment: center-right; /* For container alignment */
     -fx-text-alignment: right;   /* For text inside label */
-    -fx-font-size: 15px;
+    -fx-font-size: 16px;
 }
 
 /* KDE Dark Theme */
