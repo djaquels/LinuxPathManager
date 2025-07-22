@@ -16,6 +16,7 @@ import org.json.JSONObject;
 public class SettingsMenuBar extends MenuBar {
 
     private static final Path CONFIG_PATH = Paths.get("/usr/share/linuxpathmanager/config.json");
+    private static final Path userConfig = Paths.get(System.getProperty("user.home"), ".config", "linuxpathmanager", "config.json");
     private final ObjectMapper objectMapper;
 
     // Default shells and themes
@@ -98,8 +99,14 @@ public class SettingsMenuBar extends MenuBar {
 
     private Config loadConfig() {
         try {
-            if (Files.exists(CONFIG_PATH)) {
-                return objectMapper.readValue(CONFIG_PATH.toFile(), Config.class);
+            Path systemConfig = CONFIG_PATH; // or /etc/...
+            if (!Files.exists(userConfig)) {
+                Files.createDirectories(userConfig.getParent());
+                Files.copy(systemConfig, userConfig, StandardCopyOption.REPLACE_EXISTING);
+            }
+            // Now use userConfig as the config file
+            if (Files.exists(userConfig)) {
+                return objectMapper.readValue(userConfig.toFile(), Config.class);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -115,10 +122,10 @@ public class SettingsMenuBar extends MenuBar {
 
     private void saveConfig() {
         try {
-            if (!Files.exists(CONFIG_PATH.getParent())) {
-                Files.createDirectories(CONFIG_PATH.getParent());
+            if (!Files.exists(userConfig.getParent())) {
+                Files.createDirectories(userConfig.getParent());
             }
-            objectMapper.writeValue(CONFIG_PATH.toFile(), config);
+            objectMapper.writeValue(userConfig.toFile(), config);
         } catch (IOException e) {
             e.printStackTrace();
         }
