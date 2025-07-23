@@ -8,3 +8,7 @@ linuxpathmanager/*
 target
 ./target
 target/*
+linuxpathmanager_*
+./linuxpathmanager_*
+linuxpathmanager-1.0-1.fc42.noarch.rpm
+./linuxpathmanager-1.0-1.fc42.noarch.rpm

@@ -22,4 +22,4 @@ chmod 666 linuxpathmanager/usr/share/linuxpathmanager/config.json
 # desktop fil
 cp linuxpathmanager.desktop linuxpathmanager/usr/share/applications/linuxpathmanager.desktop
 # bygg .deb packet
-cd linuuxpathmanager && debuild -S -sa -k$KEY_ID
+cd linuxpathmanager && debuild -S -sa -k$KEY_ID
