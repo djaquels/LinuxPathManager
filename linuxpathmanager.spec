@@ -23,7 +23,7 @@ A simple JavaFX-based utility to view and edit the system PATH and environment v
 mkdir -p %{buildroot}/usr/share/linuxpathmanager
 mkdir -p %{buildroot}/usr/bin
 mkdir -p %{buildroot}/usr/share/applications
-cp -a linux-path-gui-1.0-SNAPSHOT.jar icon.png %{buildroot}/usr/share/linuxpathmanager/
+cp -a linux-path-gui-1.0-SNAPSHOT.jar icon.png config.json %{buildroot}/usr/share/linuxpathmanager/
 install -m 755 linuxpathmanager %{buildroot}/usr/bin/linuxpathmanager
 install -m 644 linuxpathmanager.desktop %{buildroot}/usr/share/applications/linuxpathmanager.desktop
 
