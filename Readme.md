@@ -30,6 +30,16 @@ sudo apt install ./linuxpathmanager.deb
 - '.deb' package for easy installation (other Linux packkage managers pending)
 - Remote (ssh) management of environment variables, for GUI server management (pending)
 
+## Builds
+
+### Fedora
+
+```bash
+sudo docker build -t rpm-linuxpathmanager .
+sudo docker run -it  --name rpm-build rpm-linuxpathmanager /bin/bash
+sudo docker cp rpm-build:/home/builder/rpmbuild/RPMS/noarch/linuxpathmanager-1.0-1.fc42.noarch.rpm .
+```
+
 ## Feedback and contributions
 
 Feel free to open issues or pull requests, bug reports and enhancement requests are welcome.

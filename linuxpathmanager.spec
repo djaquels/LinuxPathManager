@@ -31,6 +31,7 @@ install -m 644 linuxpathmanager.desktop %{buildroot}/usr/share/applications/linu
 /usr/bin/linuxpathmanager
 /usr/share/linuxpathmanager/linux-path-gui-1.0-SNAPSHOT.jar
 /usr/share/linuxpathmanager/icon.png
+/usr/share/linuxpathmanager/config.json
 /usr/share/applications/linuxpathmanager.desktop
 
 %changelog
